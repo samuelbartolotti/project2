@@ -1,4 +1,4 @@
-package Player;
+package Player.Command;
 
 public abstract class Command {
 }
