@@ -3,5 +3,5 @@ package Player.Command;
 public abstract class Command {
     public abstract String execute();
 
-    public abstract void exit();
+    public abstract boolean exit();
 }
