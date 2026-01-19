@@ -1,4 +1,4 @@
-package UserInterface;
+package Interface;
 
 public class ConsoleUI implements UI {
 
