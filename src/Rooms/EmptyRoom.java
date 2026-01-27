@@ -5,6 +5,4 @@ public class EmptyRoom extends Room{
        width = rnd(minLength, maxLength);
        length = rnd(minLength, maxLength);
    }
-
-
 }
