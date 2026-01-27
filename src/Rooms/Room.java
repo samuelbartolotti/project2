@@ -8,4 +8,5 @@ public abstract class Room extends RandomGenerator {
 
     protected int width;
     protected int length;
+
 }
