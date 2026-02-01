@@ -55,9 +55,9 @@ public class Weapons {
         this.cooldown = cooldown;
     }
 
-    public StringBuilder wepStats(Weapons weapon){
+    public StringBuilder wepStats(){
         StringBuilder stats = new StringBuilder();
-        stats.append("Weapon:").append("\n" + " name - ").append(weapon.getName()).append("\n" + " damage - ").append(weapon.getDamage()).append("\n" + " range - ").append(weapon.getRange()).append("\n" + " rarity - ").append(weapon.getRarity()).append("\n").append("cooldown - ").append(weapon.getCooldown()).append("\n");
+        stats.append("Weapon:").append("\n" + " name - ").append(name).append("\n" + " damage - ").append(damage).append("\n" + " range - ").append(range).append("\n" + " rarity - ").append(rarity).append("\n").append("cooldown - ").append(cooldown).append("\n");
         return stats;
     }
 
