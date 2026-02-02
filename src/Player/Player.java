@@ -1,5 +1,7 @@
 package Player;
 
+import java.awt.*;
+
 public class Player {
     private String name;
     private int kills;
@@ -9,6 +11,7 @@ public class Player {
     private int maxHp;
     private double defence;
     private double attack;
+    private Point position;
 
     public String getName() {
         return name;
@@ -63,11 +66,12 @@ public class Player {
     }
 
     public void addHp(int hp){
-        this.hp += hp;
+        if (!(this.hp+hp > this.maxHp)){this.hp += hp;}
     }
 
     public void takeDamage(int damage){
         this.hp -= damage;
+        if (this.hp < 0){addDeath();}
     }
 
     public int getMaxHp() {
@@ -104,6 +108,14 @@ public class Player {
 
     public void addAttack(double attack){
         this.attack += attack;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
     }
 
     public Player() {
