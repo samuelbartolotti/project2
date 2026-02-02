@@ -51,7 +51,7 @@ public class Consumables extends RandomGenerator {
         this.rarity = generateRarity();
     }
 
-    public void addEffect(Player player) {
+    public void useConsumable(Player player) {
         effect.apply(player, rarity.returnEffect());
     }
 
