@@ -7,6 +7,7 @@ public class Player {
     private int level;
     private int hp;
     private int defence;
+    private int attack;
 
     public String getName() {
         return name;
@@ -76,11 +77,24 @@ public class Player {
         this.defence += defence;
     }
 
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void addAttack(int attack){
+        this.attack += attack;
+    }
+
     public Player() {
         kills = 0;
         deaths = 0;
         level = 1;
         hp = 100;
         defence = 1;
+        attack = 1;
     }
 }
