@@ -5,6 +5,7 @@ public class Player {
     private int kills;
     private int deaths;
     private int level;
+    private int hp;
 
     public String getName() {
         return name;
@@ -50,9 +51,22 @@ public class Player {
         this.level++;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void takeDamage(int damage){
+        this.hp -= damage;
+    }
+
     public Player() {
         kills = 0;
         deaths = 0;
         level = 1;
+        hp = 100;
     }
 }
