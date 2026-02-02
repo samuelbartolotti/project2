@@ -6,8 +6,9 @@ public class Player {
     private int deaths;
     private int level;
     private int hp;
-    private int defence;
-    private int attack;
+    private int maxHp;
+    private double defence;
+    private double attack;
 
     public String getName() {
         return name;
@@ -61,31 +62,47 @@ public class Player {
         this.hp = hp;
     }
 
+    public void addHp(int hp){
+        this.hp += hp;
+    }
+
     public void takeDamage(int damage){
         this.hp -= damage;
     }
 
-    public int getDefence() {
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public void addMaxHp(int hp){
+        this.maxHp += hp;
+    }
+
+    public double getDefence() {
         return defence;
     }
 
-    public void setDefence(int defence) {
+    public void setDefence(double defence) {
         this.defence = defence;
     }
 
-    public void addDefence(int defence){
+    public void addDefence(double defence){
         this.defence += defence;
     }
 
-    public int getAttack() {
+    public double getAttack() {
         return attack;
     }
 
-    public void setAttack(int attack) {
+    public void setAttack(double attack) {
         this.attack = attack;
     }
 
-    public void addAttack(int attack){
+    public void addAttack(double attack){
         this.attack += attack;
     }
 
