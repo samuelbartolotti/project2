@@ -6,6 +6,7 @@ public class Player {
     private int deaths;
     private int level;
     private int hp;
+    private int defence;
 
     public String getName() {
         return name;
@@ -63,10 +64,23 @@ public class Player {
         this.hp -= damage;
     }
 
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public void addDefence(int defence){
+        this.defence += defence;
+    }
+
     public Player() {
         kills = 0;
         deaths = 0;
         level = 1;
         hp = 100;
+        defence = 1;
     }
 }
