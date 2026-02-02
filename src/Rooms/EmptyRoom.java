@@ -1,8 +1,12 @@
 package Rooms;
 
+import java.awt.*;
+
 public class EmptyRoom extends Room{
-   public EmptyRoom() {
-       width = rnd(minLength, maxLength);
-       length = rnd(minLength, maxLength);
-   }
+    public EmptyRoom() {
+        Point xy = super.generateXY();
+
+        this.width = xy.x;
+        this.length = xy.y;
+    }
 }
