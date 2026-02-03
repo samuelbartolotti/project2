@@ -1,10 +1,14 @@
 package PlayerCommand;
 
+import Player.Player;
+
 public class Move extends Command {
 
     @Override
-    public String execute() {
-        return "";
+    public void execute(String str, Player player) {
+        if (str.equals("w") || str.equals("s") || str.equals("a") || str.equals("d")) {
+
+        }
     }
 
     @Override

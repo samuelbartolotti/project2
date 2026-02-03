@@ -1,5 +1,7 @@
 package PlayerCommand;
 
+import Player.Player;
+
 public class ESC extends Command {
     private boolean inMenu;
 
@@ -12,8 +14,10 @@ public class ESC extends Command {
     }
 
     @Override
-    public String execute() {
-        return "";
+    public void execute(String str, Player player) {
+        if (str.equals("esc")){
+
+        }
     }
 
     @Override
