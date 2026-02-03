@@ -21,5 +21,6 @@ public class FightRoom extends Room {
         this.numOfEnemies = rnd(minEnemies, maxEnemies);
         this.width = xy.x;
         this.length = xy.y;
+        this.display = new String[width][length];
     }
 }
