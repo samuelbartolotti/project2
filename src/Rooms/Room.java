@@ -7,7 +7,12 @@ import java.awt.*;
 public abstract class Room extends RandomGenerator {
     protected final int maxLength = 20;
     protected final int minLength = 10;
-    protected String[][] display;
+    protected Object[][] display;
+    protected boolean north;
+    protected boolean south;
+    protected boolean east;
+    protected boolean west;
+    protected int ID;
 
     protected int width;
     protected int length;
@@ -36,12 +41,52 @@ public abstract class Room extends RandomGenerator {
         this.length = length;
     }
 
-    public String[][] getDisplay() {
+    public Object[][] getDisplay() {
         return display;
     }
 
-    public void setDisplay(String[][] display) {
+    public void setDisplay(Object[][] display) {
         this.display = display;
+    }
+
+    public boolean isNorth() {
+        return north;
+    }
+
+    public void setNorth(boolean north) {
+        this.north = north;
+    }
+
+    public boolean isSouth() {
+        return south;
+    }
+
+    public void setSouth(boolean south) {
+        this.south = south;
+    }
+
+    public boolean isEast() {
+        return east;
+    }
+
+    public void setEast(boolean east) {
+        this.east = east;
+    }
+
+    public boolean isWest() {
+        return west;
+    }
+
+    public void setWest(boolean west) {
+        this.west = west;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public Point generateXY(){

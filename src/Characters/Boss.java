@@ -4,4 +4,9 @@ public class Boss extends Enemies{
     public Boss(int hp, int damage, String name) {
         super(hp, damage, name);
     }
+
+    @Override
+    public String toString() {
+        return "B";
+    }
 }

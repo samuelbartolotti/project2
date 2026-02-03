@@ -13,6 +13,8 @@ public class Player {
     private double attack;
     private Point position;
     private String currentRoom;
+    private Point lookingInDir;
+    private int currentSlot;
 
     public String getName() {
         return name;
@@ -125,6 +127,22 @@ public class Player {
 
     public void setCurrentRoom(String currentRoom) {
         this.currentRoom = currentRoom;
+    }
+
+    public Point getLookingInDir() {
+        return lookingInDir;
+    }
+
+    public void setLookingInDir(Point lookingInDir) {
+        this.lookingInDir = lookingInDir;
+    }
+
+    public int getCurrentSlot() {
+        return currentSlot;
+    }
+
+    public void setCurrentSlot(int currentSlot) {
+        this.currentSlot = currentSlot;
     }
 
     public Player() {
