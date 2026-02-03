@@ -12,6 +12,7 @@ public class Player {
     private double defence;
     private double attack;
     private Point position;
+    private String currentRoom;
 
     public String getName() {
         return name;
@@ -116,6 +117,14 @@ public class Player {
 
     public void setPosition(Point position) {
         this.position = position;
+    }
+
+    public String getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(String currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     public Player() {
