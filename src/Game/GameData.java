@@ -18,9 +18,29 @@ import java.util.ArrayList;
  */
 public class GameData {
 
-    public ArrayList<Weapons> weapons;
-    public ArrayList<Boss> bosses;
-    public ArrayList<Enemy> enemies;
+    private ArrayList<Weapons> weapons;
+    private ArrayList<Boss> bosses;
+    private ArrayList<Enemy> enemies;
+
+    public void setWeapons(ArrayList<Weapons> weapons) {
+        this.weapons = weapons;
+    }
+
+    public ArrayList<Boss> getBosses() {
+        return bosses;
+    }
+
+    public void setBosses(ArrayList<Boss> bosses) {
+        this.bosses = bosses;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(ArrayList<Enemy> enemies) {
+        this.enemies = enemies;
+    }
 
     /**
      * Loads game data from a JSON file.
@@ -49,6 +69,10 @@ public class GameData {
         } catch (Exception e) {
             throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());
         }
+
+    }
+
+    public static ArrayList<Weapons> getWeapons() {
 
     }
 

@@ -1,6 +1,8 @@
 package Rooms;
 
+import Game.GameData;
 import Interface.RandomGenerator;
+import Items.Consumables;
 
 import java.awt.*;
 
@@ -89,35 +91,57 @@ public abstract class Room extends RandomGenerator {
         this.ID = ID;
     }
 
-    public Point generateXY(){
-       int width = rnd(minLength, maxLength);
-       int length = rnd(minLength, maxLength);
+    public Point generateXY() {
+        int width = rnd(minLength, maxLength);
+        int length = rnd(minLength, maxLength);
 
-       return new Point(width, length);
+        return new Point(width, length);
     }
 
-    public void generateChances(SpawnType... spawnTypes){
+    public Object chooseItem(SpawnType type) {
+        if (type == SpawnType.CONSUMABLE){
+            return new Consumables();
+        } else {
+            int number = rnd(minLength, maxLength);
+            return GameData.getWeapons().get(number);
+        }
+    }
+
+    public void generateChances(SpawnType... spawnTypes) {
         int number = rnd(1, 100);
         int currentRangeStart = 0;
         SpawnType choosedType = null;
 
-        for(SpawnType spawnType : spawnTypes){
+        for (SpawnType spawnType : spawnTypes) {
             int chance = spawnType.getChance();
-            if(number > currentRangeStart && number <= chance){
+            if (number > currentRangeStart && number <= chance) {
                 choosedType = spawnType;
                 break;
             }
             currentRangeStart += chance;
         }
-        if(choosedType != null){
+        if (choosedType != null) {
+            int x;
+            int y;
 
+            do {
+                x = rnd(1, width);
+                y = rnd(1, length);
+            }
+            while (display[x][y] != null);
+
+            if (choosedType == SpawnType.CHEST_ROOM) {
+                display[x][y] = "CH";
+            } else {
+                display[x][y] = chooseItem(choosedType);
+            }
         }
     }
 
-    public StringBuilder displayRoom(){
+    public StringBuilder displayRoom() {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < width; i++){
-            for(int y = 0; y < length; y++){
+        for (int i = 0; i < width; i++) {
+            for (int y = 0; y < length; y++) {
                 sb.append(display[y][i]);
             }
             sb.append("\n");
