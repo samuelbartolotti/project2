@@ -2,6 +2,6 @@ import Game.GameLoop;
 
 public class Main {
     public static void main(String[] args) {
-        GameLoop.play();
+        GameLoop.start();
     }
 }
