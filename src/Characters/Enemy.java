@@ -5,6 +5,10 @@ public class Enemy extends Enemies{
         super(hp, damage, name);
     }
 
+    public Enemy(int hp, int damage, String name, int cooldown) {
+        super(hp, damage, name, cooldown);
+    }
+
     @Override
     public String toString() {
         return "E";

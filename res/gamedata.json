@@ -20,6 +20,130 @@
       "range": 1,
       "rarity": "COMMON",
       "cooldown": 1
+    },
+    {
+      "name": "shadow_fang",
+      "damage": 8,
+      "range": 1,
+      "rarity": "RARE",
+      "cooldown": 1
+    },
+    {
+      "name": "frost_edge",
+      "damage": 8,
+      "range": 1,
+      "rarity": "RARE",
+      "cooldown": 1
+    },
+    {
+      "name": "Hunter’s_Verdict",
+      "damage": 12,
+      "range": 1,
+      "rarity": "RARE",
+      "cooldown": 2
+    },
+    {
+      "name": "Flames_of_Oblivion",
+      "damage": 12,
+      "range": 1,
+      "rarity": "EPIC",
+      "cooldown": 1
+    },
+    {
+      "name": "Blade_of_Fallen_Kings",
+      "damage": 18,
+      "range": 1,
+      "rarity": "EPIC",
+      "cooldown": 2
+    },
+    {
+      "name": "Storm_Ripper",
+      "damage": 10,
+      "range": 2,
+      "rarity": "EPIC",
+      "cooldown": 1
+    },
+    {
+      "name": "Eclipse_of_Eternity",
+      "damage": 25,
+      "range": 2,
+      "rarity": "LEGENDARY",
+      "cooldown": 1
+    },
+    {
+      "name": "Dragonheart",
+      "damage": 60,
+      "range": 1,
+      "rarity": "LEGENDARY",
+      "cooldown": 2
+    },
+    {
+      "name": "Fatebreaker",
+      "damage": 100,
+      "range": 1,
+      "rarity": "LEGENDARY",
+      "cooldown": 3
+    }
+  ],
+  "bosses": [
+    {
+      "hp": 50,
+      "damage": 15,
+      "name": "Void_Tyrant",
+      "cooldown": 1
+    },
+    {
+      "hp": 80,
+      "damage": 5,
+      "name": "Devourer_of_Worlds",
+      "cooldown": 1
+    },
+    {
+      "hp": 40,
+      "damage": 30,
+      "name": "Bloodbound_King",
+      "cooldown": 1
+    },
+    {
+      "hp": 50,
+      "damage": 25,
+      "name": "Lord_of_Ruin",
+      "cooldown": 2
+    },
+    {
+      "hp": 80,
+      "damage": 20,
+      "name": "the_Eternal_Warden",
+      "cooldown": 2
+    }
+  ],
+  "enemy": [
+    {
+      "hp": 10,
+      "damage": 4,
+      "name": "Void_Scout"
+    },
+    {
+      "hp": 5,
+      "damage": 12,
+      "name": "Ash_Walker"
+    },
+    {
+      "hp": 8,
+      "damage": 10,
+      "name": "Shadow_Minion",
+      "cooldown": 2
+    },
+    {
+      "hp": 6,
+      "damage": 12,
+      "name": "Bloodfang_Raider",
+      "cooldown": 2
+    },
+    {
+      "hp": 15,
+      "damage": 2,
+      "name": "Darkling_Stalker"
     }
   ]
 }
