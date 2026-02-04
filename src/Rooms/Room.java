@@ -96,6 +96,24 @@ public abstract class Room extends RandomGenerator {
        return new Point(width, length);
     }
 
+    public void generateChances(SpawnType... spawnTypes){
+        int number = rnd(1, 100);
+        int currentRangeStart = 0;
+        SpawnType choosedType = null;
+
+        for(SpawnType spawnType : spawnTypes){
+            int chance = spawnType.getChance();
+            if(number > currentRangeStart && number <= chance){
+                choosedType = spawnType;
+                break;
+            }
+            currentRangeStart += chance;
+        }
+        if(choosedType != null){
+
+        }
+    }
+
     public StringBuilder displayRoom(){
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < width; i++){
