@@ -16,7 +16,9 @@ public class ESC extends Command {
     @Override
     public void execute(String str, Player player) {
         if (str.equals("esc")){
+            if(inMenu){
 
+            }
         }
     }
 
