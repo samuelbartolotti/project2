@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class GameData {
 
     public ArrayList<Weapons> weapons;
-    public ArrayList<Consumables> consumables;
     public ArrayList<Boss> bosses;
     public ArrayList<Enemy> enemies;
 

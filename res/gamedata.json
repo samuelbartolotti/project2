@@ -1,1 +1,25 @@
-{}
+{
+  "weapons": [
+    {
+      "name": "stone_sword",
+      "damage": 5,
+      "range": 1,
+      "rarity": "COMMON",
+      "cooldown": 1
+    },
+    {
+      "name": "stone_axe",
+      "damage": 8,
+      "range": 1,
+      "rarity": "COMMON",
+      "cooldown": 2
+    },
+    {
+      "name": "stick",
+      "damage": 3,
+      "range": 1,
+      "rarity": "COMMON",
+      "cooldown": 1
+    }
+  ]
+}
