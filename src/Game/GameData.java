@@ -1,5 +1,9 @@
 package Game;
 
+import Characters.Boss;
+import Characters.Enemy;
+import Items.Consumables;
+import Items.Weapons;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
@@ -14,10 +18,10 @@ import java.util.ArrayList;
  */
 public class GameData {
 
-    public ArrayList<Item> items;
-    public ArrayList<GameCharacter> characters;
-    public ArrayList<Location> locations;
-    public ArrayList<Quest> quests;
+    public ArrayList<Weapons> weapons;
+    public ArrayList<Consumables> consumables;
+    public ArrayList<Boss> bosses;
+    public ArrayList<Enemy> enemies;
 
     /**
      * Loads game data from a JSON file.
@@ -49,19 +53,15 @@ public class GameData {
 
     }
 
-    /**
-     * Finds a specific location by its identifier.
-     * @param id the identifier of the location to be found
-     * @return the matching location
-     */
-    public Location findLocation(String id) {
-        for (Location l : locations) {
-            if (l.getId().equals(id)){
-                return l;
-            }
-        }
-        throw new IllegalArgumentException("Neexistuje lokace s id: " + id);
-    }
+
+//    public Location findLocation(String id) {
+//        for (Location l : locations) {
+//            if (l.getId().equals(id)){
+//                return l;
+//            }
+//        }
+//        throw new IllegalArgumentException("Neexistuje lokace s id: " + id);
+//    }
 
 
 }

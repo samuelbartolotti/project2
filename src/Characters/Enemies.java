@@ -57,9 +57,4 @@ public abstract class Enemies {
         stats.append("Enemy: ").append("\n" + " name - ").append(name).append("\n" + " HP - ").append(hp).append("\n" + " damage - ").append(damage).append("\n" + " Cooldown - ").append(cooldown);
         return stats;
     }
-
-    @Override
-    public String toString() {
-        return "E";
-    }
 }
