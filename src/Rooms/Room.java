@@ -15,6 +15,7 @@ public abstract class Room extends RandomGenerator {
     protected boolean east;
     protected boolean west;
     protected int ID;
+    protected int chance;
 
     protected int width;
     protected int length;
@@ -91,6 +92,14 @@ public abstract class Room extends RandomGenerator {
         this.ID = ID;
     }
 
+    public int getChance() {
+        return chance;
+    }
+
+    public void setChance(int chance) {
+        this.chance = chance;
+    }
+
     public Point generateXY() {
         int width = rnd(minLength, maxLength);
         int length = rnd(minLength, maxLength);
@@ -105,6 +114,13 @@ public abstract class Room extends RandomGenerator {
             int number = rnd(minLength, maxLength);
             return GameData.getWeapons().get(number);
         }
+    }
+
+    public Room generateRoomType(){
+        int number = rnd(1, 100);
+//dodelat enum s sancema na mistnosti a pak to vygenerovat
+
+        return null;
     }
 
     public void generateChances(SpawnType... spawnTypes) {

@@ -9,5 +9,6 @@ public class EmptyRoom extends Room{
         this.width = xy.x;
         this.length = xy.y;
         this.display = new String[width][length];
+        this.chance = 40;
     }
 }

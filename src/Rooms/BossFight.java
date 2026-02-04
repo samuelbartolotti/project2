@@ -24,5 +24,6 @@ public class BossFight extends Room {
         this.fight = new FightRoom();
         this.display = new String[fight.width][fight.length];
         this.numOfBoss = 1;
+        this.chance = 10;
     }
 }
