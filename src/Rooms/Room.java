@@ -3,10 +3,8 @@ package Rooms;
 import Game.GameData;
 import Interface.RandomGenerator;
 import Items.Consumables;
-import Items.Weapons;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public abstract class Room extends RandomGenerator {
     protected final int maxLength = 20;
@@ -110,7 +108,7 @@ public abstract class Room extends RandomGenerator {
     }
 
     public Object chooseItem(SpawnType type) {
-        if (type == SpawnType.CONSUMABLE){
+        if (type == SpawnType.CONSUMABLE) {
             return new Consumables();
         } else {
 
@@ -119,7 +117,7 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
-    public Room generateRoomType(){
+    public Room generateRoomType() {
         int number = rnd(1, 100);
 
         Room[] rooms = {
@@ -132,8 +130,8 @@ public abstract class Room extends RandomGenerator {
         int baseValue = 0;
 
         for (Room r : rooms) {
-           int chance = r.getChance();
-            if(baseValue < number && number <= chance + baseValue){
+            int chance = r.getChance();
+            if (baseValue < number && number <= chance + baseValue) {
                 return r;
             }
             baseValue += chance;
