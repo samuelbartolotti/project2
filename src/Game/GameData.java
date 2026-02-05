@@ -76,6 +76,10 @@ public class GameData {
 
     }
 
+    public static ArrayList<Enemy> getEnemies(){
+
+    }
+
 
 //    public Location findLocation(String id) {
 //        for (Location l : locations) {

@@ -3,8 +3,10 @@ package Rooms;
 import Game.GameData;
 import Interface.RandomGenerator;
 import Items.Consumables;
+import Items.Weapons;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Room extends RandomGenerator {
     protected final int maxLength = 20;
@@ -111,7 +113,8 @@ public abstract class Room extends RandomGenerator {
         if (type == SpawnType.CONSUMABLE){
             return new Consumables();
         } else {
-            int number = rnd(minLength, maxLength);
+
+            int number = rnd(1, GameData.getWeapons().size());
             return GameData.getWeapons().get(number);
         }
     }
