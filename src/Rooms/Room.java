@@ -118,7 +118,23 @@ public abstract class Room extends RandomGenerator {
 
     public Room generateRoomType(){
         int number = rnd(1, 100);
-//dodelat enum s sancema na mistnosti a pak to vygenerovat
+
+        Room[] rooms = {
+                new EmptyRoom(),
+                new FightRoom(),
+                new BossFight(),
+                new Shop()
+        };
+
+        int baseValue = 0;
+
+        for (Room r : rooms) {
+           int chance = r.getChance();
+            if(baseValue < number && number <= chance + baseValue){
+                return r;
+            }
+            baseValue += chance;
+        }
 
         return null;
     }
