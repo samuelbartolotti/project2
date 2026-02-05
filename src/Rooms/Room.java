@@ -114,7 +114,7 @@ public abstract class Room extends RandomGenerator {
             return new Consumables();
         } else {
 
-            int number = rnd(1, GameData.getWeapons().size());
+            int number = rnd(0, GameData.getWeapons().size());
             return GameData.getWeapons().get(number);
         }
     }

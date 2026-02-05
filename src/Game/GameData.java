@@ -18,28 +18,32 @@ import java.util.ArrayList;
  */
 public class GameData {
 
-    private ArrayList<Weapons> weapons;
-    private ArrayList<Boss> bosses;
-    private ArrayList<Enemy> enemies;
+    private static ArrayList<Weapons> weapons;
+    private static ArrayList<Boss> bosses;
+    private static ArrayList<Enemy> enemies;
 
-    public void setWeapons(ArrayList<Weapons> weapons) {
-        this.weapons = weapons;
+    public static ArrayList<Weapons> getWeapons() {
+        return weapons;
     }
 
-    public ArrayList<Boss> getBosses() {
+    public static void setWeapons(ArrayList<Weapons> weapons) {
+        GameData.weapons = weapons;
+    }
+
+    public static ArrayList<Boss> getBosses() {
         return bosses;
     }
 
-    public void setBosses(ArrayList<Boss> bosses) {
-        this.bosses = bosses;
+    public static void setBosses(ArrayList<Boss> bosses) {
+        GameData.bosses = bosses;
     }
 
-    public ArrayList<Enemy> getEnemies() {
+    public static ArrayList<Enemy> getEnemies() {
         return enemies;
     }
 
-    public void setEnemies(ArrayList<Enemy> enemies) {
-        this.enemies = enemies;
+    public static void setEnemies(ArrayList<Enemy> enemies) {
+        GameData.enemies = enemies;
     }
 
     /**
@@ -69,14 +73,6 @@ public class GameData {
         } catch (Exception e) {
             throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());
         }
-
-    }
-
-    public static ArrayList<Weapons> getWeapons() {
-
-    }
-
-    public static ArrayList<Enemy> getEnemies(){
 
     }
 

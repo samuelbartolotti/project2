@@ -25,13 +25,16 @@ public class FightRoom extends Room {
         this.length = xy.y;
         this.display = new String[width][length];
         chance = 30;
+
+        this.generateEnemies();
     }
 
     public void generateEnemies() {
         for (int i = 0; i < numOfEnemies; i++) {
             Point xy = super.generateXY();
             if(display[xy.x][xy.y] == null){
-                int chooseEnemy = rnd(1, GameData.getEnemies().size());
+                int chooseEnemy = rnd(0, GameData.getEnemies().size());
+                display[xy.x][xy.y] = GameData.getEnemies().get(chooseEnemy);
             }
         }
     }
