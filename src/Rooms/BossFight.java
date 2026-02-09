@@ -1,5 +1,9 @@
 package Rooms;
 
+import Game.GameData;
+
+import java.awt.*;
+
 public class BossFight extends Room {
     private FightRoom fight;
     private int numOfBoss;
@@ -22,8 +26,20 @@ public class BossFight extends Room {
 
     public BossFight(){
         this.fight = new FightRoom();
-        this.display = new String[fight.width][fight.length];
+        this.display =  fight.getDisplay();
         this.numOfBoss = 1;
         chance = 10;
+
+        generateBosses();
+    }
+
+    public void generateBosses() {
+        for (int i = 0; i < numOfBoss; i++) {
+            Point xy = super.generateXY(this.width, this.height);
+            if(display[xy.x][xy.y] == null){
+                int chooseBoss = rnd(0, GameData.getBosses().size());
+                display[xy.x][xy.y] = GameData.getBosses().get(chooseBoss);
+            }
+        }
     }
 }

@@ -15,11 +15,11 @@ public class Corridor extends Room{
         this.up = up;
         if(up){
             this.width = 5;
-            this.length = 10;
+            this.height = 10;
         } else {
             this.width = 10;
-            this.length = 5;
+            this.height = 5;
         }
-        this.display = new String[width][length];
+        this.display = new String[width][height];
     }
 }

@@ -4,11 +4,11 @@ import java.awt.*;
 
 public class EmptyRoom extends Room{
     public EmptyRoom() {
-        Point xy = super.generateXY();
+        Point xy = super.generateRoomXY();
 
         this.width = xy.x;
-        this.length = xy.y;
-        this.display = new String[width][length];
+        this.height = xy.y;
+        this.display = new String[width][height];
         chance = 40;
     }
 }

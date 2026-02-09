@@ -18,7 +18,7 @@ public abstract class Room extends RandomGenerator {
     protected int chance;
 
     protected int width;
-    protected int length;
+    protected int height;
 
     public int getMaxLength() {
         return maxLength;
@@ -36,12 +36,12 @@ public abstract class Room extends RandomGenerator {
         this.width = width;
     }
 
-    public int getLength() {
-        return length;
+    public int getHeight() {
+        return height;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public Object[][] getDisplay() {
@@ -100,11 +100,18 @@ public abstract class Room extends RandomGenerator {
         this.chance = chance;
     }
 
-    public Point generateXY() {
+    public Point generateRoomXY() {
         int width = rnd(minLength, maxLength);
         int length = rnd(minLength, maxLength);
 
         return new Point(width, length);
+    }
+
+    public Point generateXY(int width, int height) {
+        int x = rnd(0, width);
+        int y = rnd(0, height);
+
+        return new Point(x, y);
     }
 
     public Object chooseItem(SpawnType type) {
@@ -117,7 +124,7 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
-    public Room generateRoomType() {
+    public static Room generateRoomType() {
         int number = rnd(1, 100);
 
         Room[] rooms = {
@@ -159,7 +166,7 @@ public abstract class Room extends RandomGenerator {
 
             do {
                 x = rnd(1, width);
-                y = rnd(1, length);
+                y = rnd(1, height);
             }
             while (display[x][y] != null);
 
@@ -171,14 +178,16 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
-    public StringBuilder displayRoom() {
+    public String displayRoom() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < width; i++) {
-            for (int y = 0; y < length; y++) {
+            for (int y = 0; y < height; y++) {
                 sb.append(display[y][i]);
             }
             sb.append("\n");
         }
-        return sb;
+        return sb.toString();
     }
+
+
 }
