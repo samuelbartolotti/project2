@@ -19,6 +19,10 @@ public class Inventory {
         this.inventory = new Weapons[inventorySize-1];
     }
 
+    public Object getItem(int i){
+        return inventory[i];
+    }
+
     public String displayInv(){
         if(inventory[0] == null){
             return "inventory is empty";

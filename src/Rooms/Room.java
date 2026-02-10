@@ -48,6 +48,14 @@ public abstract class Room extends RandomGenerator {
         return display;
     }
 
+    public Object getObj(int x, int y){
+        return display[x][y];
+    }
+
+    public void setObj(int x, int y, Object o){
+        display[x][y] = o;
+    }
+
     public void setDisplay(Object[][] display) {
         this.display = display;
     }
@@ -98,6 +106,10 @@ public abstract class Room extends RandomGenerator {
 
     public void setChance(int chance) {
         this.chance = chance;
+    }
+
+    public boolean isPlaceEmpty(int x, int y, Room room){
+        return room.getObj(x, y) == null;
     }
 
     public Point generateRoomXY() {

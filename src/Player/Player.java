@@ -13,8 +13,9 @@ public class Player {
     private double attack;
     private Point position;
     private String currentRoom;
-    private Point lookingInDir;
+    private Point facing;
     private int currentSlot;
+    private Inventory inv;
 
     public String getName() {
         return name;
@@ -70,6 +71,14 @@ public class Player {
 
     public void addHp(int hp){
         if (!(this.hp+hp > this.maxHp)){this.hp += hp;}
+    }
+
+    public Inventory getInv() {
+        return inv;
+    }
+
+    public void setInv(Inventory inventory){
+        this.inv = inventory;
     }
 
     public void takeDamage(int damage){
@@ -129,12 +138,20 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public Point getLookingInDir() {
-        return lookingInDir;
+    public Point getFacing() {
+        return facing;
     }
 
-    public void setLookingInDir(Point lookingInDir) {
-        this.lookingInDir = lookingInDir;
+    public int getX(){
+        return getFacing().x;
+    }
+
+    public int getY(){
+        return getFacing().y;
+    }
+
+    public void setFacing(Point facing) {
+        this.facing = facing;
     }
 
     public int getCurrentSlot() {
@@ -152,5 +169,7 @@ public class Player {
         hp = 100;
         defence = 1;
         attack = 1;
+
+        this.inv = new Inventory();
     }
 }

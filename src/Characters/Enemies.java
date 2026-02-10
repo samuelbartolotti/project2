@@ -22,6 +22,10 @@ public abstract class Enemies {
         this.damage = damage;
     }
 
+    public void giveDamage(int damage){
+        this.hp -= damage;
+    }
+
     public String getName() {
         return name;
     }

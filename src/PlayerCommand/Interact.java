@@ -1,11 +1,12 @@
 package PlayerCommand;
 
 import Player.Player;
+import Rooms.Room;
 
 public class Interact extends Command {
 
     @Override
-    public void execute(String str, Player player) {
+    public void execute(String str, Player player, Room room) {
         if (str.equals("e")) {
 
         }

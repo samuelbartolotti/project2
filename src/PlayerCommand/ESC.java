@@ -1,6 +1,7 @@
 package PlayerCommand;
 
 import Player.Player;
+import Rooms.Room;
 
 public class ESC extends Command {
     private boolean inMenu;
@@ -14,7 +15,7 @@ public class ESC extends Command {
     }
 
     @Override
-    public void execute(String str, Player player) {
+    public void execute(String str, Player player, Room room) {
         if (str.equals("esc")){
             if(inMenu){
 
