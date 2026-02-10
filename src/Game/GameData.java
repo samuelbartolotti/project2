@@ -18,9 +18,9 @@ import java.util.ArrayList;
  */
 public class GameData {
 
-    private static ArrayList<Weapons> weapons;
-    private static ArrayList<Boss> bosses;
-    private static ArrayList<Enemy> enemies;
+    private ArrayList<Weapons> weapons;
+    private ArrayList<Boss> bosses;
+    private ArrayList<Enemy> enemies;
 
     public static ArrayList<Weapons> getWeapons() {
         return weapons;
