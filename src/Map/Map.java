@@ -38,13 +38,22 @@ public class Map extends RandomGenerator {
         for(int i = 0; i < roomCount - 2; i++) {
             int way = rnd(1,3);
 
-            if(way == 1 && map[roomXY.x + 1][roomXY.y] == null){
-                map[roomXY.x + 1][roomXY.y] = Room.generateRoomType();
-            } else if(way == 2){
-                map[roomXY.x][roomXY.y + 1] = Room.generateRoomType();
-            } else if(way == 3 && map[roomXY.x - 1][roomXY.y] == null){
-                map[roomXY.x - 1][roomXY.y] = Room.generateRoomType();
-            } else {
+            try {
+
+                if (way == 1 && map[roomXY.x + 1][roomXY.y] == null) {
+                    map[roomXY.x + 1][roomXY.y] = Room.generateRoomType();
+                    roomXY.x++;
+                } else if (way == 2) {
+                    map[roomXY.x][roomXY.y + 1] = Room.generateRoomType();
+                    roomXY.y++;
+                } else if (way == 3 && map[roomXY.x - 1][roomXY.y] == null) {
+                    map[roomXY.x - 1][roomXY.y] = Room.generateRoomType();
+                    roomXY.x--;
+                } else {
+                    i--;
+                }
+
+            }catch (ArrayIndexOutOfBoundsException e) {
                 i--;
             }
         }
