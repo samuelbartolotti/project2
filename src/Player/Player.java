@@ -1,5 +1,7 @@
 package Player;
 
+import Rooms.Room;
+
 import java.awt.*;
 
 public class Player {
@@ -138,15 +140,23 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
+    public int getX(){
+        return getPosition().x;
+    }
+
+    public int getY(){
+        return getPosition().y;
+    }
+
     public Point getFacing() {
         return facing;
     }
 
-    public int getX(){
+    public int facingX(){
         return getFacing().x;
     }
 
-    public int getY(){
+    public int facingY(){
         return getFacing().y;
     }
 
@@ -160,6 +170,13 @@ public class Player {
 
     public void setCurrentSlot(int currentSlot) {
         this.currentSlot = currentSlot;
+    }
+
+    public void movePlayer(int x, int y, Room room){
+        if(room.isPlaceEmpty(x,y,room)){
+            this.setFacing(new Point(x,y));
+            room.setObj(x,y,this);
+        }
     }
 
     public Player() {

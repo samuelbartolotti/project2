@@ -12,7 +12,7 @@ public class Attack extends Command {
     @Override
     public void execute(String str, Player player, Room room) {
         if(str.equals("f")){
-            Object o = room.getObj(player.getX(), player.getY());
+            Object o = room.getObj(player.facingX(), player.facingY());
             Object wep = player.getInv().getItem(player.getCurrentSlot());
             if(o instanceof Enemies enemy && wep instanceof Weapons weapon){
                 enemy.giveDamage(weapon.getDamage());
