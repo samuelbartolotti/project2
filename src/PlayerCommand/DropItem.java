@@ -1,5 +1,10 @@
 package PlayerCommand;
 
+import Exceptions.EmptyInventorySlot;
+import Exceptions.NoneEnemyInFrontOfYou;
+import Exceptions.NoneWeaponInYourSlot;
+import Exceptions.PlaceInFrontOfYouIsOccupied;
+import Items.Weapons;
 import Player.Player;
 import Rooms.Room;
 
@@ -12,6 +17,10 @@ public class DropItem extends Command {
             Object item = player.getInv().getItem(player.getCurrentSlot());
             if (o == null && item != null) {
                 room.setObj(player.getX(), player.getY(), item);
+            }  else if (item == null){
+                throw new EmptyInventorySlot("You dont have any item in your current slot");
+            } else {
+                throw new PlaceInFrontOfYouIsOccupied("You are currently facing an occupied square");
             }
         }
     }
