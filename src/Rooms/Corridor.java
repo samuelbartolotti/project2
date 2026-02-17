@@ -20,6 +20,6 @@ public class Corridor extends Room{
             this.width = 10;
             this.height = 5;
         }
-        this.display = new String[width][height];
+        this.display = new Object[width][height];
     }
 }

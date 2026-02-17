@@ -48,11 +48,11 @@ public abstract class Room extends RandomGenerator {
         return display;
     }
 
-    public Object getObj(int x, int y){
+    public Object getObj(int x, int y) {
         return display[x][y];
     }
 
-    public void setObj(int x, int y, Object o){
+    public void setObj(int x, int y, Object o) {
         display[x][y] = o;
     }
 
@@ -108,7 +108,7 @@ public abstract class Room extends RandomGenerator {
         this.chance = chance;
     }
 
-    public boolean isPlaceEmpty(int x, int y, Room room){
+    public boolean isPlaceEmpty(int x, int y, Room room) {
         return room.getObj(x, y) == null;
     }
 
@@ -120,8 +120,8 @@ public abstract class Room extends RandomGenerator {
     }
 
     public Point generateXY(int width, int height) {
-        int x = rnd(0, width);
-        int y = rnd(0, height);
+        int x = rnd(0, width - 1);
+        int y = rnd(0, height - 1);
 
         return new Point(x, y);
     }
@@ -131,8 +131,8 @@ public abstract class Room extends RandomGenerator {
             return new Consumables();
         } else {
 
-            int number = rnd(0, GameData.getWeapons().size());
-            return GameData.getWeapons().get(number);
+            int number = rnd(0, GameData.getWepList().size());
+            return GameData.getWepList().get(number);
         }
     }
 
@@ -201,5 +201,8 @@ public abstract class Room extends RandomGenerator {
         return sb.toString();
     }
 
-
+    @Override
+    public String toString() {
+        return "R";
+    }
 }

@@ -23,7 +23,7 @@ public class FightRoom extends Room {
         this.numOfEnemies = rnd(minEnemies, maxEnemies);
         this.width = xy.x;
         this.height = xy.y;
-        this.display = new String[width][height];
+        this.display = new Object[width][height];
         chance = 30;
 
         this.generateEnemies();
@@ -33,8 +33,8 @@ public class FightRoom extends Room {
         for (int i = 0; i < numOfEnemies; i++) {
             Point xy = super.generateXY(this.width, this.height);
             if(display[xy.x][xy.y] == null){
-                int chooseEnemy = rnd(0, GameData.getEnemies().size());
-                display[xy.x][xy.y] = GameData.getEnemies().get(chooseEnemy);
+                int chooseEnemy = rnd(0, GameData.getEneList().size()-1);
+                display[xy.x][xy.y] = GameData.getEneList().get(chooseEnemy);
             }
         }
     }

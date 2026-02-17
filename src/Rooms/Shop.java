@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Shop extends Room {
     private final int numberOfItems = 3;
-    private ArrayList<Weapons> weapons;
-    private ArrayList<Consumables> consumables;
+    private ArrayList<Weapons> weapons = new ArrayList<>();
+    private ArrayList<Consumables> consumables = new ArrayList<>();
 
     public ArrayList<Weapons> getWeapons() {
         return weapons;
@@ -30,7 +30,7 @@ public class Shop extends Room {
     public Shop() {
         this.width = 11;
         this.height = 11;
-        this.display = new String[width][height];
+        this.display = new Object[width][height];
         this.display[6][6] = "O";
         chance = 10;
 
@@ -42,9 +42,9 @@ public class Shop extends Room {
             int chooseTypeOfWeapon = rnd(0, 1);
 
             if (chooseTypeOfWeapon == 1) {
-                int chooseWeapon = rnd(0, GameData.getWeapons().size());
+                int chooseWeapon = rnd(0, GameData.getWepList().size()-1);
 
-                   weapons.add(GameData.getWeapons().get(chooseWeapon));
+                   weapons.add(GameData.getWepList().get(chooseWeapon));
             } else {
                 consumables.add(new Consumables());
             }

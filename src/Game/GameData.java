@@ -22,28 +22,56 @@ public class GameData {
     private ArrayList<Boss> bosses;
     private ArrayList<Enemy> enemies;
 
-    public static ArrayList<Weapons> getWeapons() {
+    private static ArrayList<Weapons> wepList;
+    private static ArrayList<Boss> bossList;
+    private static ArrayList<Enemy> eneList;
+
+    public ArrayList<Weapons> getWeapons() {
         return weapons;
     }
 
-    public static void setWeapons(ArrayList<Weapons> weapons) {
-        GameData.weapons = weapons;
+    public void setWeapons(ArrayList<Weapons> weapons) {
+        this.weapons = weapons;
     }
 
-    public static ArrayList<Boss> getBosses() {
+    public ArrayList<Boss> getBosses() {
         return bosses;
     }
 
-    public static void setBosses(ArrayList<Boss> bosses) {
-        GameData.bosses = bosses;
+    public void setBosses(ArrayList<Boss> bosses) {
+        this.bosses = bosses;
     }
 
-    public static ArrayList<Enemy> getEnemies() {
+    public ArrayList<Enemy> getEnemies() {
         return enemies;
     }
 
-    public static void setEnemies(ArrayList<Enemy> enemies) {
-        GameData.enemies = enemies;
+    public void setEnemies(ArrayList<Enemy> enemies) {
+        this.enemies = enemies;
+    }
+
+    public static ArrayList<Weapons> getWepList() {
+        return wepList;
+    }
+
+    public static void setWepList(ArrayList<Weapons> wepList) {
+        GameData.wepList = wepList;
+    }
+
+    public static ArrayList<Boss> getBossList() {
+        return bossList;
+    }
+
+    public static void setBossList(ArrayList<Boss> bossList) {
+        GameData.bossList = bossList;
+    }
+
+    public static ArrayList<Enemy> getEneList() {
+        return eneList;
+    }
+
+    public static void setEneList(ArrayList<Enemy> eneList) {
+        GameData.eneList = eneList;
     }
 
     /**
@@ -65,10 +93,17 @@ public class GameData {
             }
 
             //Přečte celý JSON a vytvoří instanci game.GameData, naplní vlastnosti podle názvů klíčů v JSONU, vrátí se hotová třída game.GameData
-            return gson.fromJson(
+            GameData data = gson.fromJson(
                     new InputStreamReader(is, StandardCharsets.UTF_8),
                     GameData.class
             );
+
+            //  PŘIDÁNO – přehrání do statických listů
+            wepList = data.getWeapons();
+            bossList = data.getBosses();
+            eneList = data.getEnemies();
+
+            return data;
 
         } catch (Exception e) {
             throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());

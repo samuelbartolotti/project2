@@ -26,6 +26,9 @@ public class BossFight extends Room {
 
     public BossFight(){
         this.fight = new FightRoom();
+        this.width = fight.width;
+        this.height = fight.height;
+
         this.display =  fight.getDisplay();
         this.numOfBoss = 1;
         chance = 10;
@@ -37,8 +40,8 @@ public class BossFight extends Room {
         for (int i = 0; i < numOfBoss; i++) {
             Point xy = super.generateXY(this.width, this.height);
             if(display[xy.x][xy.y] == null){
-                int chooseBoss = rnd(0, GameData.getBosses().size());
-                display[xy.x][xy.y] = GameData.getBosses().get(chooseBoss);
+                int chooseBoss = rnd(0, GameData.getBossList().size()-1);
+                display[xy.x][xy.y] = GameData.getBossList().get(chooseBoss);
             }
         }
     }

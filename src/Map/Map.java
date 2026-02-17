@@ -54,7 +54,11 @@ public class Map extends RandomGenerator {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int y = 0; y < height; y++) {
-                sb.append(map[y][i]);
+                if (map[y][i] != null) {
+                    sb.append(map[y][i]);
+                } else {
+                    sb.append(" ");
+                }
             }
             sb.append("\n");
         }

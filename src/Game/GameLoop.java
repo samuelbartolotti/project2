@@ -10,7 +10,7 @@ public class GameLoop {
 //        world = GameData.loadGameDataFromResources("/gamedata.json");
 //    }
 
-    public static void start(){
+    public void start(){
 //        inicialization();
         //zde bude herni smycka
     }
