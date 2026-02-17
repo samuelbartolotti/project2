@@ -40,22 +40,33 @@ public class Map extends RandomGenerator {
 
             try {
 
-                if (way == 1 && map[roomXY.x + 1][roomXY.y] == null) {
-                    map[roomXY.x + 1][roomXY.y] = Room.generateRoomType();
-                    roomXY.x++;
-                } else if (way == 2) {
-                    map[roomXY.x][roomXY.y + 1] = Room.generateRoomType();
-                    roomXY.y++;
-                } else if (way == 3 && map[roomXY.x - 1][roomXY.y] == null) {
-                    map[roomXY.x - 1][roomXY.y] = Room.generateRoomType();
-                    roomXY.x--;
-                } else {
-                    i--;
+                switch (way) {
+                    case 1 -> {
+                        roomXY.x++;
+                        if(!isPlaceEmpty(roomXY)){roomXY.x--; i--;}
+                    }
+                    case 2 -> {
+                        roomXY.y++;
+                        if(!isPlaceEmpty(roomXY)){roomXY.y--; i--;}
+                    }
+                    case 3 -> {
+                        roomXY.x--;
+                        if(!isPlaceEmpty(roomXY)){roomXY.x++; i--;}
+                    }
                 }
 
-            }catch (ArrayIndexOutOfBoundsException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 i--;
             }
+        }
+    }
+
+    public boolean isPlaceEmpty(Point roomXY){
+        if(map[roomXY.x][roomXY.y] == null) {
+            map[roomXY.x][roomXY.y] = Room.generateRoomType();
+            return true;
+        } else {
+            return false;
         }
     }
 
