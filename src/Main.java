@@ -8,5 +8,6 @@ public class Main {
         gl.start();
         Map m = new Map();
         System.out.println(m.displayMap());
+        System.out.println(GameData.getHelp());
     }
 }

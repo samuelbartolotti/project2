@@ -21,10 +21,12 @@ public class GameData {
     private ArrayList<Weapons> weapons;
     private ArrayList<Boss> bosses;
     private ArrayList<Enemy> enemies;
+    private String helpLoad;
 
     private static ArrayList<Weapons> wepList;
     private static ArrayList<Boss> bossList;
     private static ArrayList<Enemy> eneList;
+    private static String help;
 
     public ArrayList<Weapons> getWeapons() {
         return weapons;
@@ -50,6 +52,14 @@ public class GameData {
         this.enemies = enemies;
     }
 
+    public String getHelpLoad() {
+        return helpLoad;
+    }
+
+    public void setHelpLoad(String helpLoad) {
+        this.helpLoad = helpLoad;
+    }
+
     public static ArrayList<Weapons> getWepList() {
         return wepList;
     }
@@ -72,6 +82,14 @@ public class GameData {
 
     public static void setEneList(ArrayList<Enemy> eneList) {
         GameData.eneList = eneList;
+    }
+
+    public static String getHelp() {
+        return help;
+    }
+
+    public static void setHelp(String help) {
+        GameData.help = help;
     }
 
     /**
@@ -102,6 +120,7 @@ public class GameData {
             wepList = data.getWeapons();
             bossList = data.getBosses();
             eneList = data.getEnemies();
+            help = data.getHelpLoad();
 
             return data;
 

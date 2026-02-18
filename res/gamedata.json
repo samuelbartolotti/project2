@@ -145,5 +145,6 @@
       "damage": 2,
       "name": "Darkling_Stalker"
     }
-  ]
+  ],
+  "helpLoad": "Functions:\nMovement: (wsad)\nChangeSlot: 1/2 (+/ě)\nAttack: f\nDropItem: q\nInteract e\nESC: esc (Its used for opening end closing this menu.\nIf you want to close this menu use esc command again)\n\nObjective:\nYour main goal is to fight trough the maze. Then find exist.\nThis maze contains 10 levels, each with many dangers to face."
 }

@@ -1,5 +1,6 @@
 package PlayerCommand;
 
+import Game.GameData;
 import Player.Player;
 import Rooms.Room;
 
@@ -14,11 +15,16 @@ public class ESC extends Command {
         this.inMenu = inMenu;
     }
 
+
+
     @Override
     public void execute(String str, Player player, Room room) {
         if (str.equals("esc")){
             if(inMenu){
 
+            } else {
+                inMenu = true;
+                super.println(GameData.getHelp());
             }
         }
     }
