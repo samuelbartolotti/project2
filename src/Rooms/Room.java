@@ -143,7 +143,8 @@ public abstract class Room extends RandomGenerator {
                 new EmptyRoom(),
                 new FightRoom(),
                 new BossFight(),
-                new Shop()
+                new Shop(),
+                new ChestRoom()
         };
 
         int baseValue = 0;
