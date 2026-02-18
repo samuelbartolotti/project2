@@ -32,7 +32,7 @@ public class Shop extends Room {
         this.height = 11;
         this.display = new Object[width][height];
         this.display[6][6] = "O";
-        chance = 15;
+        chance = 10;
 
         generateItems();
     }
