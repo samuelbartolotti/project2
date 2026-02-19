@@ -1,6 +1,6 @@
 package Interface;
 
-public class ConsoleUI implements UI {
+public class ConsoleUI extends RandomGenerator implements UI  {
 
     @Override
     public void print(String string) {

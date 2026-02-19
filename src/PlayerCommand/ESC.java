@@ -24,7 +24,7 @@ public class ESC extends Command {
 
             } else {
                 inMenu = true;
-                super.println(GameData.getHelp());
+                super.println(GameData.getText().getFirst());
             }
         }
     }

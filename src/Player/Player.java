@@ -172,6 +172,10 @@ public class Player {
         this.currentSlot = currentSlot;
     }
 
+    public boolean isSlotEmpty(){
+        return inv.getItem(currentSlot) == null;
+    }
+
     public void movePlayer(int x, int y, Room room){
         if(room.isPlaceEmpty(x,y,room)){
             this.setFacing(new Point(x,y));

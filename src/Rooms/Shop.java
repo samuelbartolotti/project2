@@ -50,4 +50,17 @@ public class Shop extends Room {
             }
         }
     }
+
+    public Object buy(int choice){
+        int current = 0;
+        for (int i = 0; i < numberOfItems; i++) {
+            if(current == choice && i < weapons.size()) {
+                return weapons.get(current);
+            } else if (current == choice) {
+                return consumables.get(current-weapons.size());
+            }
+            current ++;
+        }
+        return null;
+    }
 }

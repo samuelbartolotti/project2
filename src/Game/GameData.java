@@ -2,7 +2,6 @@ package Game;
 
 import Characters.Boss;
 import Characters.Enemy;
-import Items.Consumables;
 import Items.Weapons;
 import com.google.gson.Gson;
 
@@ -21,12 +20,12 @@ public class GameData {
     private ArrayList<Weapons> weapons;
     private ArrayList<Boss> bosses;
     private ArrayList<Enemy> enemies;
-    private String helpLoad;
+    private ArrayList<String> textLoad;
 
     private static ArrayList<Weapons> wepList;
     private static ArrayList<Boss> bossList;
     private static ArrayList<Enemy> eneList;
-    private static String help;
+    private static ArrayList<String> text;
 
     public ArrayList<Weapons> getWeapons() {
         return weapons;
@@ -52,12 +51,12 @@ public class GameData {
         this.enemies = enemies;
     }
 
-    public String getHelpLoad() {
-        return helpLoad;
+    public ArrayList<String> getTextLoad() {
+        return textLoad;
     }
 
-    public void setHelpLoad(String helpLoad) {
-        this.helpLoad = helpLoad;
+    public void setTextLoad(ArrayList<String> textLoad) {
+        this.textLoad = textLoad;
     }
 
     public static ArrayList<Weapons> getWepList() {
@@ -84,12 +83,12 @@ public class GameData {
         GameData.eneList = eneList;
     }
 
-    public static String getHelp() {
-        return help;
+    public static ArrayList<String> getText() {
+        return text;
     }
 
-    public static void setHelp(String help) {
-        GameData.help = help;
+    public static void setText(ArrayList<String> text) {
+        GameData.text = text;
     }
 
     /**
@@ -120,7 +119,7 @@ public class GameData {
             wepList = data.getWeapons();
             bossList = data.getBosses();
             eneList = data.getEnemies();
-            help = data.getHelpLoad();
+            text = data.getTextLoad();
 
             return data;
 
