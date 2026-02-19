@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         GameLoop gl = new GameLoop();
         gl.start();
-        Map m = new Map();
-        System.out.println(m.displayMap());
-        System.out.println(GameData.getText().get(1));
+//        Map m = new Map();
+//        System.out.println(m.displayMap());
+//        System.out.println(GameData.getText().get(1));
     }
 }

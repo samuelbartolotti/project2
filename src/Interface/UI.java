@@ -6,4 +6,6 @@ public interface UI {
     void println(String string);
 
     String scanLine();
+
+    void closeSc();
 }

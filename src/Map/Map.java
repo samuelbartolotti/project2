@@ -24,6 +24,10 @@ public class Map extends RandomGenerator {
         return width;
     }
 
+    public Room getRoom(Point point){
+        return map[point.x][point.y];
+    }
+
     public Map() {
         this.map = new Room[width][height];
         map[5][0] = new EmptyRoom();

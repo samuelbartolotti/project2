@@ -19,4 +19,9 @@ public class ConsoleUI extends RandomGenerator implements UI  {
     public String scanLine() {
         return sc.nextLine();
     }
+
+    @Override
+    public void closeSc(){
+        sc.close();
+    }
 }

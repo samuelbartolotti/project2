@@ -14,7 +14,7 @@ public class Player {
     private double defence;
     private double attack;
     private Point position;
-    private String currentRoom;
+    private Point currentRoom;
     private Point facing;
     private int currentSlot;
     private Inventory inv;
@@ -133,11 +133,11 @@ public class Player {
         this.position = position;
     }
 
-    public String getCurrentRoom() {
+    public Point getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(String currentRoom) {
+    public void setCurrentRoom(Point currentRoom) {
         this.currentRoom = currentRoom;
     }
 
@@ -187,8 +187,7 @@ public class Player {
 
     public void movePlayer(int x, int y, Room room){
         if(room.isPlaceEmpty(x,y,room)){
-            this.setFacing(new Point(x,y));
-            room.setObj(x,y,this);
+            this.setPosition(new Point(x,y));
         }
     }
 
@@ -200,7 +199,14 @@ public class Player {
         defence = 1;
         attack = 1;
         playersGold = 0;
+        currentRoom = new Point(5, 1);
+        position = new Point(5, 0);
 
         this.inv = new Inventory();
+    }
+
+    @Override
+    public String toString() {
+        return "P";
     }
 }

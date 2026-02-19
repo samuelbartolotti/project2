@@ -193,12 +193,37 @@ public abstract class Room extends RandomGenerator {
 
     public String displayRoom() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < width; i++) {
-            for (int y = 0; y < height; y++) {
-                sb.append(display[y][i]);
+        sb.append(" ");
+
+        for (int i = -1; i <= height; i++) {
+            for (int y = 0; y < width; y++) {
+
+                if (y == 0 && i!=-1 && i<height) {
+                    sb.append("|");
+                } else if (i == -1) {
+                    sb.append(" ").append("_").append(" ");
+                }
+
+                if(i!=-1 && i<height) {
+                    if (display[y][i] == null) {
+                        sb.append(" ").append("n").append(" ");
+                    } else {
+                        sb.append(" ").append(display[y][i]).append(" ");
+                    }
+                }
+
+                if(y+1==width && i!=-1 && i<height) {
+                   sb.append("|");
+                } else if (i==height) {
+                    if(y==0){
+                        sb.append(" ");
+                    }
+                    sb.append(" ").append("‾").append(" ");
+                }
             }
             sb.append("\n");
         }
+
         return sb.toString();
     }
 
