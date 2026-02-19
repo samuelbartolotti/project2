@@ -3,25 +3,7 @@ package Items;
 import Interface.RandomGenerator;
 import Player.Player;
 
-public class Consumables extends RandomGenerator {
-    private Effect effect;
-    private Rarity rarity;
-
-    public Effect getEffect() {
-        return effect;
-    }
-
-    public void setEffect(Effect effect) {
-        this.effect = effect;
-    }
-
-    public Rarity getRarity() {
-        return rarity;
-    }
-
-    public void setRarity(Rarity rarity) {
-        this.rarity = rarity;
-    }
+public class Consumables extends Item {
 
     public Effect generateEffect() {
         int eff = rnd(0, 3);
@@ -49,6 +31,7 @@ public class Consumables extends RandomGenerator {
     public Consumables() {
         this.effect = generateEffect();
         this.rarity = generateRarity();
+        this.price = rarity.returnPrice();
     }
 
     public void useConsumable(Player player) {

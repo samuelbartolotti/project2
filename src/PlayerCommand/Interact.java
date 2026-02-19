@@ -4,6 +4,7 @@ import Items.Consumables;
 import Items.Weapons;
 import Player.Player;
 import Rooms.Room;
+import Rooms.Shop;
 import Rooms.SpawnType;
 
 public class Interact extends Command {
@@ -26,8 +27,18 @@ public class Interact extends Command {
                 } else if(o instanceof Consumables) {
                     ((Consumables) o).useConsumable(player);
 
-                } else if(o.equals("o")) {
-
+                } else if(o.equals("o") && room instanceof Shop) {
+                    boolean inMenu = true;
+                    while(inMenu) {
+                        String s = super.scanLine();
+                        int choice = Integer.parseInt(s);
+                        if(s.equals("esc")){
+                            inMenu = false;
+                        } else if (choice >= 1 && choice <= 3) {
+                            Shop shop = (Shop) room;
+                            shop.buy(shop.choose(choice), player);
+                        }
+                    }
                 }
             }
         }

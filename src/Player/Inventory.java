@@ -15,6 +15,10 @@ public class Inventory {
         this.inventory = iventory;
     }
 
+    public void addToInventory(Weapons item, int place) {
+        this.inventory[place] = item;
+    }
+
     public Inventory(){
         this.inventory = new Weapons[inventorySize-1];
     }
@@ -32,6 +36,15 @@ public class Inventory {
         } else {
             return inventory[0].wepStats().toString() + inventory[1].wepStats().toString();
         }
+    }
+
+    public int isInventoryFull(){
+        for(int i = 0; i < inventory.length; i++){
+            if(inventory[i] == null){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void addtoInventory(Weapons wep){

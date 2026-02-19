@@ -18,6 +18,7 @@ public class Player {
     private Point facing;
     private int currentSlot;
     private Inventory inv;
+    private int playersGold;
 
     public String getName() {
         return name;
@@ -176,6 +177,14 @@ public class Player {
         return inv.getItem(currentSlot) == null;
     }
 
+    public int getPlayersGold() {
+        return playersGold;
+    }
+
+    public void setPlayersGold(int playersGold) {
+        this.playersGold = playersGold;
+    }
+
     public void movePlayer(int x, int y, Room room){
         if(room.isPlaceEmpty(x,y,room)){
             this.setFacing(new Point(x,y));
@@ -190,6 +199,7 @@ public class Player {
         hp = 100;
         defence = 1;
         attack = 1;
+        playersGold = 0;
 
         this.inv = new Inventory();
     }
