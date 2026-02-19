@@ -3,6 +3,7 @@ package Interface;
 import java.util.Scanner;
 
 public class ConsoleUI extends RandomGenerator implements UI  {
+    private static final Scanner sc = new Scanner(System.in);
 
     @Override
     public void print(String string) {
@@ -16,7 +17,6 @@ public class ConsoleUI extends RandomGenerator implements UI  {
 
     @Override
     public String scanLine() {
-        Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 }
