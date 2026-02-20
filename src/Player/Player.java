@@ -185,9 +185,15 @@ public class Player {
         this.playersGold = playersGold;
     }
 
-    public void movePlayer(int x, int y, Room room){
+    public void movePlayer(int x, int y, int before, Room room){
         if(room.isPlaceEmpty(x,y,room)){
             this.setPosition(new Point(x,y));
+            room.setObj(x,y, this);
+            if(Math.abs(before) == 1){
+                room.setObj(x+before, y, null);
+            } else {
+                room.setObj(x, y + Integer.signum(before), null);
+            }
         }
     }
 
@@ -199,7 +205,7 @@ public class Player {
         defence = 1;
         attack = 1;
         playersGold = 0;
-        currentRoom = new Point(5, 1);
+        currentRoom = new Point(5, 0);
         position = new Point(5, 0);
 
         this.inv = new Inventory();

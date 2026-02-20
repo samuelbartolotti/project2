@@ -3,6 +3,7 @@ package Map;
 import Interface.RandomGenerator;
 import Rooms.EmptyRoom;
 import Rooms.Room;
+import Player.Player;
 
 import java.awt.*;
 
@@ -34,6 +35,10 @@ public class Map extends RandomGenerator {
         map[5][1] = Room.generateRoomType();
 
         generateMap();
+    }
+
+    public void setPlayer(Player player){
+        map[5][0].setObj(player.getX(), player.getY(), player);
     }
 
     public void generateMap() {
