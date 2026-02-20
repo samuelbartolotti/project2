@@ -1,5 +1,6 @@
 package PlayerCommand;
 
+import Exceptions.PlaceIsEmpty;
 import Items.Consumables;
 import Items.Weapons;
 import Player.Player;
@@ -15,24 +16,26 @@ public class Interact extends Command {
             Object o = room.getDisplay()[player.facingX()][player.facingY()];
             int x = player.facingX();
             int y = player.facingY();
-            if(o != null) {
+            if (o != null) {
 
-                if(o instanceof Weapons && player.isSlotEmpty()) {
+                if (o instanceof Weapons && player.isSlotEmpty()) {
                     player.getInv().addtoInventory((Weapons) o);
+                    room.setObj(x, y, null);
 
-                } else if(o.equals("ch")) {
+                } else if (o.equals("ch")) {
                     SpawnType type = SpawnType.values()[rnd(0, 1)];
-                    room.getDisplay()[x][y] = room.chooseItem(type);
+                    room.setObj(x, y, room.chooseItem(type));
 
-                } else if(o instanceof Consumables) {
+                } else if (o instanceof Consumables) {
                     ((Consumables) o).useConsumable(player);
+                    room.setObj(x, y, null);
 
-                } else if(o.equals("o") && room instanceof Shop) {
+                } else if (o.equals("o") && room instanceof Shop) {
                     boolean inMenu = true;
-                    while(inMenu) {
+                    while (inMenu) {
                         String s = super.scanLine();
                         int choice = Integer.parseInt(s);
-                        if(s.equals("esc")){
+                        if (s.equals("esc")) {
                             inMenu = false;
                         } else if (choice >= 1 && choice <= 3) {
                             Shop shop = (Shop) room;
@@ -40,6 +43,8 @@ public class Interact extends Command {
                         }
                     }
                 }
+            } else {
+                throw new PlaceIsEmpty("There is not any action to be made. The place infront is empty.");
             }
         }
     }
