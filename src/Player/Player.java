@@ -1,6 +1,7 @@
 package Player;
 
 import Exceptions.CantWalkIntoWall;
+import Exceptions.PlaceInFrontOfYouIsOccupied;
 import Rooms.Room;
 
 import java.awt.*;
@@ -190,6 +191,10 @@ public class Player {
         this.playersGold = playersGold;
     }
 
+    public void addGold(int amount) {
+        this.playersGold += amount;
+    }
+
     public void movePlayer(int x, int y, int before, Room room) {
         if (x < room.getWidth() && y < room.getHeight() && x >= 0 && y >= 0) {
             if (room.isPlaceEmpty(x, y, room)) {
@@ -200,9 +205,11 @@ public class Player {
                 } else {
                     room.setObj(x, y + Integer.signum(before), null);
                 }
+            } else {
+                throw new PlaceInFrontOfYouIsOccupied("There is something in your path.");
             }
         } else {
-            throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall");
+            throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall.");
         }
     }
 
@@ -216,6 +223,7 @@ public class Player {
         playersGold = 0;
         currentRoom = new Point(5, 0);
         position = new Point(5, 0);
+        facing = new Point(5,1);
 
         this.inv = new Inventory();
     }

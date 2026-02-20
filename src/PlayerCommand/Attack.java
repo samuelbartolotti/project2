@@ -12,10 +12,16 @@ public class Attack extends Command {
     @Override
     public void execute(String str, Player player, Room room) {
         if(str.equals("f")){
-            Object o = room.getObj(player.facingX(), player.facingY());
+            int x = player.facingX();
+            int y = player.facingY();
+            Object o = room.getObj(x, y);
             Object wep = player.getInv().getItem(player.getCurrentSlot());
             if(o instanceof Enemies enemy && wep instanceof Weapons weapon){
                 enemy.giveDamage(weapon.getDamage());
+                if(enemy.getHp() < 0){
+                    room.setObj(x,y,null);
+                    player.addGold(5);
+                }
             } else if (wep instanceof Weapons){
                 throw new NoneEnemyInFrontOfYou("You are not facing enemy");
             } else {

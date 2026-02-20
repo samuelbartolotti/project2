@@ -26,6 +26,7 @@ public class GameLoop extends ConsoleUI {
 
     public void start() {
         super.println(GameData.getText().get(1));
+        player.getInv().addToInventory(GameData.getWepList().getFirst(), 0);
 
         Command[] commands = {
                 new Attack(),

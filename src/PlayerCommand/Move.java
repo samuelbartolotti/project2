@@ -16,22 +16,22 @@ public class Move extends Command {
             switch (str) {
                 case "w" -> {
                     player.movePlayer(x, y+1, -2, room);
-                    player.setFacing(new Point(x,y + 1));
+                    player.setFacing(new Point(player.getX(), player.getY() + 1));
                 }
 
                 case "s" -> {
                     player.movePlayer(x, y-1, 2, room);
-                    player.setFacing(new Point(x, y - 1));
+                    player.setFacing(new Point(player.getX(), player.getY() - 1));
                 }
 
                 case "a" -> {
                     player.movePlayer(x-1, y, 1, room);
-                    player.setFacing(new Point(x - 1, y));
+                    player.setFacing(new Point(player.getX() - 1, player.getY()));
                 }
 
                 case "d" -> {
                     player.movePlayer(x+1, y, -1, room);
-                    player.setFacing(new Point(x + 1, y));
+                    player.setFacing(new Point(player.getX() + 1, player.getY()));
                 }
 
                 default -> throw new PlaceIsOccupied("You cant move to this place beacose it contains another object");

@@ -27,6 +27,10 @@ public class Inventory {
         return inventory[i];
     }
 
+    public void removeItem(int i){
+        inventory[i] = null;
+    }
+
     public String displayInv(){
         if(inventory[0] == null){
             return "inventory is empty";
