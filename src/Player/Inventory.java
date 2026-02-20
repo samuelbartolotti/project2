@@ -1,5 +1,7 @@
 package Player;
 
+import Exceptions.EmptyInventoryException;
+import Exceptions.EmptyInventorySlot;
 import Exceptions.FullInventoryException;
 import Items.Weapons;
 
@@ -33,10 +35,9 @@ public class Inventory {
 
     public String displayInv(){
         if(inventory[0] == null){
-            return "inventory is empty";
+            throw new EmptyInventoryException("inventory is empty");
         } else if(inventory[1] == null) {
             return inventory[0].wepStats().toString();
-
         } else {
             return inventory[0].wepStats().toString() + inventory[1].wepStats().toString();
         }
