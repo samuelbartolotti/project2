@@ -44,7 +44,7 @@ public class Interact extends Command {
                     }
                 }
             } else {
-                throw new PlaceIsEmpty("There is not any action to be made. The place infront is empty.");
+                throw new PlaceIsEmpty("There is no action to be made. The place infront is empty.");
             }
         }
     }
