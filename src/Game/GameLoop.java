@@ -46,8 +46,12 @@ public class GameLoop extends ConsoleUI {
                 super.println(room.displayRoom());
                 String s = super.scanLine();
 
-                for (Command command : commands) {
-                    command.execute(s, player, room);
+                try {
+                    for (Command command : commands) {
+                        command.execute(s, player, room);
+                    }
+                } catch (Exception e) {
+                    super.println(e.getMessage());
                 }
             }
         }

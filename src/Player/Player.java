@@ -1,5 +1,6 @@
 package Player;
 
+import Exceptions.CantWalkIntoWall;
 import Rooms.Room;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class Player {
         this.kills = kills;
     }
 
-    public void addKill(){
+    public void addKill() {
         this.kills++;
     }
 
@@ -48,7 +49,7 @@ public class Player {
         this.deaths = deaths;
     }
 
-    public void addDeath(){
+    public void addDeath() {
         this.deaths++;
     }
 
@@ -60,7 +61,7 @@ public class Player {
         this.level = level;
     }
 
-    public void addLevel(){
+    public void addLevel() {
         this.level++;
     }
 
@@ -72,21 +73,25 @@ public class Player {
         this.hp = hp;
     }
 
-    public void addHp(int hp){
-        if (!(this.hp+hp > this.maxHp)){this.hp += hp;}
+    public void addHp(int hp) {
+        if (!(this.hp + hp > this.maxHp)) {
+            this.hp += hp;
+        }
     }
 
     public Inventory getInv() {
         return inv;
     }
 
-    public void setInv(Inventory inventory){
+    public void setInv(Inventory inventory) {
         this.inv = inventory;
     }
 
-    public void takeDamage(int damage){
+    public void takeDamage(int damage) {
         this.hp -= damage;
-        if (this.hp < 0){addDeath();}
+        if (this.hp < 0) {
+            addDeath();
+        }
     }
 
     public int getMaxHp() {
@@ -97,7 +102,7 @@ public class Player {
         this.maxHp = maxHp;
     }
 
-    public void addMaxHp(int hp){
+    public void addMaxHp(int hp) {
         this.maxHp += hp;
     }
 
@@ -109,7 +114,7 @@ public class Player {
         this.defence = defence;
     }
 
-    public void addDefence(double defence){
+    public void addDefence(double defence) {
         this.defence += defence;
     }
 
@@ -121,7 +126,7 @@ public class Player {
         this.attack = attack;
     }
 
-    public void addAttack(double attack){
+    public void addAttack(double attack) {
         this.attack += attack;
     }
 
@@ -141,11 +146,11 @@ public class Player {
         this.currentRoom = currentRoom;
     }
 
-    public int getX(){
+    public int getX() {
         return getPosition().x;
     }
 
-    public int getY(){
+    public int getY() {
         return getPosition().y;
     }
 
@@ -153,11 +158,11 @@ public class Player {
         return facing;
     }
 
-    public int facingX(){
+    public int facingX() {
         return getFacing().x;
     }
 
-    public int facingY(){
+    public int facingY() {
         return getFacing().y;
     }
 
@@ -173,7 +178,7 @@ public class Player {
         this.currentSlot = currentSlot;
     }
 
-    public boolean isSlotEmpty(){
+    public boolean isSlotEmpty() {
         return inv.getItem(currentSlot) == null;
     }
 
@@ -185,15 +190,19 @@ public class Player {
         this.playersGold = playersGold;
     }
 
-    public void movePlayer(int x, int y, int before, Room room){
-        if(room.isPlaceEmpty(x,y,room)){
-            this.setPosition(new Point(x,y));
-            room.setObj(x,y, this);
-            if(Math.abs(before) == 1){
-                room.setObj(x+before, y, null);
-            } else {
-                room.setObj(x, y + Integer.signum(before), null);
+    public void movePlayer(int x, int y, int before, Room room) {
+        if (x < room.getWidth() && y < room.getHeight() && x >= 0 && y >= 0) {
+            if (room.isPlaceEmpty(x, y, room)) {
+                this.setPosition(new Point(x, y));
+                room.setObj(x, y, this);
+                if (Math.abs(before) == 1) {
+                    room.setObj(x + before, y, null);
+                } else {
+                    room.setObj(x, y + Integer.signum(before), null);
+                }
             }
+        } else {
+            throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall");
         }
     }
 
