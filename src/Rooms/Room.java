@@ -207,6 +207,8 @@ public abstract class Room extends RandomGenerator {
                 if(i!=-1 && i<height) {
                     if (display[y][i] == null) {
                         sb.append(" ").append("n").append(" ");
+                    } else if (display[y][i].equals("ch")){
+                        sb.append("ch").append(" ");
                     } else {
                         sb.append(" ").append(display[y][i]).append(" ");
                     }

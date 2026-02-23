@@ -22,6 +22,7 @@ public class Attack extends Command {
                     room.setObj(x,y,null);
                     player.addGold(5);
                 }
+                super.println("You attacked " + enemy.getName() + ".");
             } else if (wep instanceof Weapons){
                 throw new NoneEnemyInFrontOfYou("You are not facing enemy");
             } else {

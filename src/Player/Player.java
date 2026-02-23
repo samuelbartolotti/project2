@@ -202,10 +202,13 @@ public class Player {
                 room.setObj(x, y, this);
                 if (Math.abs(before) == 1) {
                     room.setObj(x + before, y, null);
+                    this.setFacing(new Point(x - before, y));
                 } else {
                     room.setObj(x, y + Integer.signum(before), null);
+                    this.setFacing(new Point(x, y - Integer.signum(before)));
                 }
             } else {
+                this.setFacing(new Point(x, y));
                 throw new PlaceInFrontOfYouIsOccupied("There is something in your path.");
             }
         } else {
