@@ -179,10 +179,6 @@ public class Player {
         this.currentSlot = currentSlot;
     }
 
-    public boolean isSlotEmpty() {
-        return inv.getItem(currentSlot) == null;
-    }
-
     public int getPlayersGold() {
         return playersGold;
     }
@@ -227,6 +223,7 @@ public class Player {
         currentRoom = new Point(5, 1);
         position = new Point(5, 0);
         facing = new Point(5,1);
+        currentSlot = 1;
 
         this.inv = new Inventory();
     }

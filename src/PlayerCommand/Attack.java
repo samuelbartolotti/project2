@@ -16,8 +16,10 @@ public class Attack extends Command {
             int y = player.facingY();
             Object o = room.getObj(x, y);
             Object wep = player.getInv().getItem(player.getCurrentSlot());
+
             if(o instanceof Enemies enemy && wep instanceof Weapons weapon){
                 enemy.giveDamage(weapon.getDamage());
+
                 if(enemy.getHp() < 0){
                     room.setObj(x,y,null);
                     player.addGold(5);

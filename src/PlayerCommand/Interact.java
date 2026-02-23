@@ -18,8 +18,8 @@ public class Interact extends Command {
             int y = player.facingY();
             if (o != null) {
 
-                if (o instanceof Weapons && player.isSlotEmpty()) {
-                    player.getInv().addtoInventory((Weapons) o);
+                if (o instanceof Weapons) {
+                    player.getInv().addToInventory((Weapons) o, player.getCurrentSlot());
                     room.setObj(x, y, null);
 
                 } else if (o.equals("ch")) {

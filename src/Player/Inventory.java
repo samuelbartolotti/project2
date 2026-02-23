@@ -1,7 +1,6 @@
 package Player;
 
 import Exceptions.EmptyInventoryException;
-import Exceptions.EmptyInventorySlot;
 import Exceptions.FullInventoryException;
 import Items.Weapons;
 
@@ -17,20 +16,20 @@ public class Inventory {
         this.inventory = iventory;
     }
 
-    public void addToInventory(Weapons item, int place) {
-        this.inventory[place] = item;
+    public boolean isInvEmpty(int i) {
+        return this.inventory[i-1] == null;
     }
 
     public Inventory(){
-        this.inventory = new Weapons[inventorySize-1];
+        this.inventory = new Weapons[inventorySize];
     }
 
     public Object getItem(int i){
-        return inventory[i];
+        return inventory[i-1];
     }
 
     public void removeItem(int i){
-        inventory[i] = null;
+        inventory[i-1] = null;
     }
 
     public String displayInv(){
@@ -52,11 +51,9 @@ public class Inventory {
         return -1;
     }
 
-    public void addtoInventory(Weapons wep){
-        if(inventory[0] == null){
-            inventory[0] = wep;
-        } else if (inventory[1] == null) {
-            inventory[1] = wep;
+    public void addToInventory(Weapons wep, int currentInventory){
+        if(this.isInvEmpty(currentInventory)){
+            inventory[currentInventory-1] = wep;
         } else {
             throw new FullInventoryException("your inventory is full");
         }

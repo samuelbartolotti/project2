@@ -131,7 +131,7 @@ public abstract class Room extends RandomGenerator {
             return new Consumables();
         } else {
 
-            int number = rnd(0, GameData.getWepList().size());
+            int number = rnd(0, GameData.getWepList().size()-1);
             return GameData.getWepList().get(number);
         }
     }
@@ -206,7 +206,7 @@ public abstract class Room extends RandomGenerator {
 
                 if(i!=-1 && i<height) {
                     if (display[y][i] == null) {
-                        sb.append(" ").append("n").append(" ");
+                        sb.append(" ").append(" ").append(" ");
                     } else if (display[y][i].equals("ch")){
                         sb.append("ch").append(" ");
                     } else {
