@@ -32,7 +32,7 @@ public class Interact extends Command {
 
                 } else if (room instanceof Shop && o.equals("O")) {
                     boolean inMenu = true;
-                    super.println(((Shop) room).itemsToString());
+                    super.println(((Shop) room).itemsToString() + "\n\n" + "Choose item by writing its number in list order, or close this menu by writing esc.");
 
                     while (inMenu) {
                         String s = super.scanLine();
