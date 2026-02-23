@@ -30,8 +30,10 @@ public class Interact extends Command {
                     ((Consumables) o).useConsumable(player);
                     room.setObj(x, y, null);
 
-                } else if (o.equals("o") && room instanceof Shop) {
+                } else if (room instanceof Shop && o.equals("O")) {
                     boolean inMenu = true;
+                    super.println(((Shop) room).itemsToString());
+
                     while (inMenu) {
                         String s = super.scanLine();
                         int choice = Integer.parseInt(s);

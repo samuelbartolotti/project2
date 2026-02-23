@@ -140,11 +140,11 @@ public abstract class Room extends RandomGenerator {
         int number = rnd(1, 100);
 
         Room[] rooms = {
-                new EmptyRoom(),
-                new FightRoom(),
-                new BossFight(),
+//                new EmptyRoom(),
+//                new FightRoom(),
+//                new BossFight(),
                 new Shop(),
-                new ChestRoom()
+//                new ChestRoom()
         };
 
         int baseValue = 0;

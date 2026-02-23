@@ -15,6 +15,7 @@ public class Shop extends Room {
     private final int numberOfItems = 3;
     private ArrayList<Weapons> weapons = new ArrayList<>();
     private ArrayList<Consumables> consumables = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
     public ArrayList<Weapons> getWeapons() {
         return weapons;
@@ -32,12 +33,33 @@ public class Shop extends Room {
         this.consumables = consumables;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public String itemsToString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Items:\n");
+        for (Item item : items) {
+            if(item instanceof Weapons) {
+                sb.append(item.getRarity().colorize(item.getName())).append("\n");
+            } else {
+                sb.append(item.getRarity().colorize(item.getEffect().toString())).append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
     public Shop() {
         this.width = 11;
         this.height = 11;
         this.display = new Object[width][height];
         this.display[6][6] = "O";
-        chance = 10;
+        chance = 100;
 
         generateItems();
     }
@@ -54,6 +76,9 @@ public class Shop extends Room {
                 consumables.add(new Consumables());
             }
         }
+
+        items.addAll(weapons);
+        items.addAll(consumables);
     }
 
     public Object choose(int choice) {

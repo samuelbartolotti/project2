@@ -221,7 +221,7 @@ public class Player {
         defence = 1;
         attack = 1;
         playersGold = 0;
-        currentRoom = new Point(5, 0);
+        currentRoom = new Point(5, 1);
         position = new Point(5, 0);
         facing = new Point(5,1);
 

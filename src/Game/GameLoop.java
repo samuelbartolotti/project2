@@ -54,6 +54,9 @@ public class GameLoop extends ConsoleUI {
                 } catch (Exception e) {
                     super.println(e.getMessage());
                 }
+
+                System.out.println(player.facingX());
+                System.out.println(player.facingY());
             }
         }
     }
