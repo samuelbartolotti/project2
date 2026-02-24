@@ -43,7 +43,6 @@ public class GameLoop extends ConsoleUI {
 
             while(true) {
                 Room room = map.getRoom(player.getCurrentRoom());
-                //room.setObj(player.getX(), player.getY(), player);
                 super.println(room.displayRoom());
                 System.out.println(map.displayMap());
                 String s = super.scanLine();
