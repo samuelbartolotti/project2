@@ -1,6 +1,7 @@
 package Map;
 
 import Interface.RandomGenerator;
+import Rooms.Corridor;
 import Rooms.EmptyRoom;
 import Rooms.Room;
 import Player.Player;
@@ -35,6 +36,28 @@ public class Map extends RandomGenerator {
         map[5][1] = Room.generateRoomType();
 
         generateMap();
+        generateCorridors();
+    }
+
+    public void generateCorridors() {
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                Room room = map[row][col];
+
+                if (room != null) {
+                    room.setNorth(hasRoom(row, col + 1));
+                    room.setSouth(hasRoom(row, col - 1));
+                    room.setEast(hasRoom(row + 1, col ));
+                    room.setWest(hasRoom(row - 1, col));
+                }
+            }
+        }
+    }
+
+    public boolean hasRoom(int row, int col) {
+        return row >= 0 && row < height &&
+                col >= 0 && col < width &&
+                map[row][col] != null;
     }
 
     public void setPlayer(Player player){

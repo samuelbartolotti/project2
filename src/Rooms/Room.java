@@ -131,7 +131,7 @@ public abstract class Room extends RandomGenerator {
             return new Consumables();
         } else {
 
-            int number = rnd(0, GameData.getWepList().size()-1);
+            int number = rnd(0, GameData.getWepList().size() - 1);
             return GameData.getWepList().get(number);
         }
     }
@@ -195,32 +195,51 @@ public abstract class Room extends RandomGenerator {
         StringBuilder sb = new StringBuilder();
         sb.append(" ");
 
-        for (int i = -1; i <= height; i++) {
+        int thirdWidth = width / 3;
+        int thirdHeight = height / 3;
+
+        for (int i = height; i >= -1; i--) {
             for (int y = 0; y < width; y++) {
 
-                if (y == 0 && i!=-1 && i<height) {
-                    sb.append("|");
+                if (y == 0 && i != -1 && i < height) {
+                    if (i >= thirdHeight && i <= thirdHeight * 2 && this.west) {
+                        sb.append("*");
+                    } else {
+                        sb.append("|");
+                    }
                 } else if (i == -1) {
-                    sb.append(" ").append("_").append(" ");
+                    if (y >= thirdWidth && y <= thirdWidth * 2 && this.south) {
+                        sb.append(" ").append("*").append(" ");
+                    } else {
+                        sb.append(" ").append("‾").append(" ");
+                    }
                 }
 
-                if(i!=-1 && i<height) {
+                if (i != -1 && i < height) {
                     if (display[y][i] == null) {
                         sb.append(" ").append(" ").append(" ");
-                    } else if (display[y][i].equals("ch")){
+                    } else if (display[y][i].equals("ch")) {
                         sb.append("ch").append(" ");
                     } else {
                         sb.append(" ").append(display[y][i]).append(" ");
                     }
                 }
 
-                if(y+1==width && i!=-1 && i<height) {
-                   sb.append("|");
-                } else if (i==height) {
-                    if(y==0){
+                if (y + 1 == width && i != -1 && i < height) {
+                    if (i > thirdHeight && i <= thirdHeight * 2 && this.east) {
+                        sb.append("*");
+                    } else {
+                        sb.append("|");
+                    }
+                } else if (i == height) {
+                    if (y == 0) {
                         sb.append(" ");
                     }
-                    sb.append(" ").append("‾").append(" ");
+                    if (y > thirdWidth && y <= thirdWidth * 2 && this.north) {
+                        sb.append(" ").append("*").append(" ");
+                    } else {
+                        sb.append(" ").append("_").append(" ");
+                    }
                 }
             }
             sb.append("\n");

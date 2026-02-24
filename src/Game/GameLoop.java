@@ -45,6 +45,7 @@ public class GameLoop extends ConsoleUI {
                 Room room = map.getRoom(player.getCurrentRoom());
                 //room.setObj(player.getX(), player.getY(), player);
                 super.println(room.displayRoom());
+                System.out.println(map.displayMap());
                 String s = super.scanLine();
 
                 try {
@@ -54,9 +55,6 @@ public class GameLoop extends ConsoleUI {
                 } catch (Exception e) {
                     super.println(e.getMessage());
                 }
-
-                System.out.println(player.facingX());
-                System.out.println(player.facingY());
             }
         }
     }
