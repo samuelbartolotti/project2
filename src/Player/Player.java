@@ -210,8 +210,6 @@ public class Player {
         } else {
             if(!moveToAnotherRoom(x,y,room)) {
                 throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall.");
-            } else {
-
             }
         }
     }
