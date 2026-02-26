@@ -208,8 +208,56 @@ public class Player {
                 throw new PlaceInFrontOfYouIsOccupied("There is something in your path.");
             }
         } else {
-            throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall.");
+            if(!moveToAnotherRoom(x,y,room)) {
+                throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall.");
+            } else {
+
+            }
         }
+    }
+
+    public boolean moveToAnotherRoom(int x, int y, Room room) {
+        int width = room.getWidth();
+        int height = room.getHeight();
+
+
+        int thirdWidth = 0;
+        int thirdHeight = 0;
+
+        if(width % 3 == 0 || width % 3 == 1) {
+            thirdWidth = width / 3;
+        } else {
+            thirdWidth = (int) Math.ceil((double) width/3);
+        }
+
+        System.out.println(thirdWidth);
+
+        if(height % 3 == 0 || height % 3 == 1) {
+            thirdHeight = height / 3;
+        } else {
+            thirdHeight = (int) Math.ceil((double) height/3);
+        }
+
+        int mapX = (int) this.currentRoom.getX();
+        int mapY = (int) this.currentRoom.getY();
+
+        if(room.isNorth() && y == height && x > thirdWidth-1 && x < width - thirdWidth){
+            this.setCurrentRoom(new Point(mapX, mapY+1));
+            return true;
+
+        } else if (room.isSouth() && y==-1 && x > thirdWidth-1 && x < width - thirdWidth){
+            this.setCurrentRoom(new Point(mapX, mapY-1));
+            return true;
+
+        } else if (room.isWest() && x==-1 && y > thirdHeight-1 && y < height - thirdHeight) {
+            this.setCurrentRoom(new Point(mapX-1, mapY));
+            return true;
+
+        } else if (room.isEast() && x == room.getWidth() && y > thirdHeight-1 && y < height - thirdHeight) {
+            this.setCurrentRoom(new Point(mapX+1, mapY));
+            return true;
+        }
+        return false;
     }
 
     public Player() {
@@ -220,7 +268,7 @@ public class Player {
         defence = 1;
         attack = 1;
         playersGold = 0;
-        currentRoom = new Point(5, 1);
+        currentRoom = new Point(5, 0);
         position = new Point(5, 0);
         facing = new Point(5,1);
         currentSlot = 1;

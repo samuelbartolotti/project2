@@ -61,7 +61,7 @@ public class Map extends RandomGenerator {
     }
 
     public void setPlayer(Player player){
-        map[5][1].setObj(player.getX(), player.getY(), player);
+        map[5][0].setObj(player.getX(), player.getY(), player);
     }
 
     public void generateMap() {

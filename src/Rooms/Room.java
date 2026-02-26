@@ -195,22 +195,39 @@ public abstract class Room extends RandomGenerator {
         StringBuilder sb = new StringBuilder();
         sb.append(" ");
 
-        int thirdWidth = width / 3;
-        int thirdHeight = height / 3;
+        int thirdWidth = 0;
+        int thirdHeight = 0;
+
+        if(width % 3 == 0 || width % 3 == 1) {
+            thirdWidth = width / 3;
+        } else {
+            thirdWidth = (int) Math.ceil((double) width/3);
+        }
+
+        System.out.println(thirdWidth);
+
+        if(height % 3 == 0 || height % 3 == 1) {
+            thirdHeight = height / 3;
+        } else {
+            thirdHeight = (int) Math.ceil((double) height/3);
+        }
 
         for (int i = height; i >= -1; i--) {
             for (int y = 0; y < width; y++) {
 
                 if (y == 0 && i != -1 && i < height) {
-                    if (i >= thirdHeight && i <= thirdHeight * 2 && this.west) {
+                    if (i > thirdHeight-1 && i < height - thirdHeight && this.west) {
                         sb.append("*");
                     } else {
                         sb.append("|");
                     }
                 } else if (i == -1) {
-                    if (y >= thirdWidth && y <= thirdWidth * 2 && this.south) {
+                    if (y > thirdWidth-1 && y < width - thirdWidth && this.south) {
                         sb.append(" ").append("*").append(" ");
                     } else {
+                        if(y==0){
+                            sb.append(" ");
+                        }
                         sb.append(" ").append("‾").append(" ");
                     }
                 }
@@ -226,16 +243,13 @@ public abstract class Room extends RandomGenerator {
                 }
 
                 if (y + 1 == width && i != -1 && i < height) {
-                    if (i > thirdHeight && i <= thirdHeight * 2 && this.east) {
+                    if (i > thirdHeight-1 && i < height - thirdHeight && this.east) {
                         sb.append("*");
                     } else {
                         sb.append("|");
                     }
                 } else if (i == height) {
-                    if (y == 0) {
-                        sb.append(" ");
-                    }
-                    if (y > thirdWidth && y <= thirdWidth * 2 && this.north) {
+                    if (y > thirdWidth-1 && y < width - thirdWidth && this.north) {
                         sb.append(" ").append("*").append(" ");
                     } else {
                         sb.append(" ").append("_").append(" ");
