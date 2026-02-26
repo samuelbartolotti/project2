@@ -40,12 +40,11 @@ public class GameLoop extends ConsoleUI {
         for(int i = 0; i < numberOfLevels; i++) {
             Map map = new Map();
             map.setPlayer(player);
+            player.setMap(map);
 
             while(true) {
                 Room room = map.getRoom(player.getCurrentRoom());
                 super.println(room.displayRoom());
-                System.out.println(room.getWidth());
-                System.out.println(room.getHeight());
                 String s = super.scanLine();
 
                 try {
