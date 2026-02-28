@@ -23,6 +23,8 @@ public class Player {
     private Inventory inv;
     private int playersGold;
     private Map map;
+    private boolean inFight;
+    private boolean inMenu;
 
     public String getName() {
         return name;
@@ -203,6 +205,22 @@ public class Player {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public boolean isInFight() {
+        return inFight;
+    }
+
+    public void setInFight(boolean inFight) {
+        this.inFight = inFight;
+    }
+
+    public boolean isInMenu() {
+        return inMenu;
+    }
+
+    public void setInMenu(boolean inMenu) {
+        this.inMenu = inMenu;
     }
 
     public void movePlayer(int x, int y, int before, Room room) {

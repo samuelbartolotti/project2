@@ -1,5 +1,6 @@
 package Rooms;
 
+import Characters.Boss;
 import Game.GameData;
 
 import java.awt.*;
@@ -34,14 +35,17 @@ public class BossFight extends Room {
         chance = 10;
 
         generateBosses();
+        generateChances();
     }
 
     public void generateBosses() {
         for (int i = 0; i < numOfBoss; i++) {
             Point xy = super.generateXY(this.width, this.height);
-            if(display[xy.x][xy.y] == null){
+            if(this.getObj(xy.x, xy.y) == null){
                 int chooseBoss = rnd(0, GameData.getBossList().size()-1);
-                display[xy.x][xy.y] = GameData.getBossList().get(chooseBoss);
+                Boss boss = GameData.getBossList().get(chooseBoss);
+                boss.setLocation(xy);
+                this.setObj(xy.x, xy.y, boss);
             }
         }
     }

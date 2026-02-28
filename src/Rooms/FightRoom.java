@@ -1,5 +1,7 @@
 package Rooms;
 
+import Characters.Enemies;
+import Characters.Enemy;
 import Game.GameData;
 
 import java.awt.*;
@@ -27,14 +29,17 @@ public class FightRoom extends Room {
         chance = 30;
 
         this.generateEnemies();
+        generateChances();
     }
 
     public void generateEnemies() {
         for (int i = 0; i < numOfEnemies; i++) {
             Point xy = super.generateXY(this.width, this.height);
-            if(display[xy.x][xy.y] == null){
+            if(this.getObj(xy.x, xy.y) == null){
                 int chooseEnemy = rnd(0, GameData.getEneList().size()-1);
-                display[xy.x][xy.y] = GameData.getEneList().get(chooseEnemy);
+                Enemies enemy = GameData.getEneList().get(chooseEnemy);
+                enemy.setLocation(xy);
+                this.setObj(xy.x, xy.y, enemy);
             }
         }
     }

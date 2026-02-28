@@ -10,5 +10,7 @@ public class EmptyRoom extends Room{
         this.height = xy.y;
         this.display = new Object[width][height];
         chance = 40;
+
+        generateChances();
     }
 }

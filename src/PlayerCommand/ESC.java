@@ -5,25 +5,15 @@ import Player.Player;
 import Rooms.Room;
 
 public class ESC extends Command {
-    private boolean inMenu;
-
-    public boolean isInMenu() {
-        return inMenu;
-    }
-
-    public void setInMenu(boolean inMenu) {
-        this.inMenu = inMenu;
-    }
-
 
 
     @Override
     public void execute(String str, Player player, Room room) {
-        if (str.equals("esc")){
-            if(inMenu){
-
+        if (str.equals("esc")) {
+            if (player.isInMenu()) {
+                player.setInMenu(false);
             } else {
-                inMenu = true;
+                player.setInMenu(true);
                 super.println(GameData.getText().getFirst());
             }
         }

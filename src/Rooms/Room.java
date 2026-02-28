@@ -1,8 +1,10 @@
 package Rooms;
 
+import Characters.Enemies;
 import Game.GameData;
 import Interface.RandomGenerator;
 import Items.Consumables;
+import Player.Player;
 
 import java.awt.*;
 
@@ -160,7 +162,8 @@ public abstract class Room extends RandomGenerator {
         return null;
     }
 
-    public void generateChances(SpawnType... spawnTypes) {
+    public void generateChances() {
+        SpawnType[] spawnTypes = SpawnType.values();
         int number = rnd(1, 100);
         int currentRangeStart = 0;
         SpawnType choosedType = null;
@@ -178,8 +181,8 @@ public abstract class Room extends RandomGenerator {
             int y;
 
             do {
-                x = rnd(1, width);
-                y = rnd(1, height);
+                x = rnd(0, width-1);
+                y = rnd(0, height-1);
             }
             while (display[x][y] != null);
 
@@ -191,6 +194,29 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
+    public boolean isInFight() {
+        if (this instanceof FightRoom || this instanceof BossFight) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (display[j][i] instanceof Enemies) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void fight(Player player) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                Object enemy = display[j][i];
+
+                if (enemy instanceof Enemies) {
+                    ((Enemies) enemy).playRound(player, this);
+                }
+            }
+        }
+    }
+
     public String displayRoom() {
         StringBuilder sb = new StringBuilder();
         sb.append(" ");
@@ -198,34 +224,34 @@ public abstract class Room extends RandomGenerator {
         int thirdWidth = 0;
         int thirdHeight = 0;
 
-        if(width % 3 == 0 || width % 3 == 1) {
+        if (width % 3 == 0 || width % 3 == 1) {
             thirdWidth = width / 3;
         } else {
-            thirdWidth = (int) Math.ceil((double) width/3);
+            thirdWidth = (int) Math.ceil((double) width / 3);
         }
 
         System.out.println(thirdWidth);
 
-        if(height % 3 == 0 || height % 3 == 1) {
+        if (height % 3 == 0 || height % 3 == 1) {
             thirdHeight = height / 3;
         } else {
-            thirdHeight = (int) Math.ceil((double) height/3);
+            thirdHeight = (int) Math.ceil((double) height / 3);
         }
 
         for (int i = height; i >= -1; i--) {
             for (int y = 0; y < width; y++) {
 
                 if (y == 0 && i != -1 && i < height) {
-                    if (i > thirdHeight-1 && i < height - thirdHeight && this.west) {
+                    if (i > thirdHeight - 1 && i < height - thirdHeight && this.west) {
                         sb.append("*");
                     } else {
                         sb.append("|");
                     }
                 } else if (i == -1) {
-                    if (y > thirdWidth-1 && y < width - thirdWidth && this.south) {
+                    if (y > thirdWidth - 1 && y < width - thirdWidth && this.south) {
                         sb.append(" ").append("*").append(" ");
                     } else {
-                        if(y==0){
+                        if (y == 0) {
                             sb.append(" ");
                         }
                         sb.append(" ").append("‾").append(" ");
@@ -243,13 +269,13 @@ public abstract class Room extends RandomGenerator {
                 }
 
                 if (y + 1 == width && i != -1 && i < height) {
-                    if (i > thirdHeight-1 && i < height - thirdHeight && this.east) {
+                    if (i > thirdHeight - 1 && i < height - thirdHeight && this.east) {
                         sb.append("*");
                     } else {
                         sb.append("|");
                     }
                 } else if (i == height) {
-                    if (y > thirdWidth-1 && y < width - thirdWidth && this.north) {
+                    if (y > thirdWidth - 1 && y < width - thirdWidth && this.north) {
                         sb.append(" ").append("*").append(" ");
                     } else {
                         sb.append(" ").append("_").append(" ");

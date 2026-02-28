@@ -62,6 +62,7 @@ public class Shop extends Room {
         chance = 10;
 
         generateItems();
+        generateChances();
     }
 
     public void generateItems() {

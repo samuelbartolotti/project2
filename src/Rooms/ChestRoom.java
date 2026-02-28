@@ -12,5 +12,6 @@ public class ChestRoom extends Room {
         chance = 10;
 
         display[width/2][height/2] = "ch";
+        generateChances();
     }
 }
