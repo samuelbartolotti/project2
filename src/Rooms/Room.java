@@ -208,7 +208,7 @@ public abstract class Room extends RandomGenerator {
     public void fight(Player player) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Object enemy = display[j][i];
+                Object enemy = this.getObj(j,i);
 
                 if (enemy instanceof Enemies) {
                     ((Enemies) enemy).playRound(player, this);

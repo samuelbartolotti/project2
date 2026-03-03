@@ -57,7 +57,7 @@ public class GameLoop extends ConsoleUI {
 
                 player.setInFight(room.isInFight());
 
-                if(!player.isInFight() && !player.isInMenu()) {
+                if(player.isInFight() && !player.isInMenu()) {
                     room.fight(player);
                 }
             }
