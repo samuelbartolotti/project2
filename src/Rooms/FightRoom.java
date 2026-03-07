@@ -5,6 +5,7 @@ import Characters.Enemy;
 import Game.GameData;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class FightRoom extends Room {
     private int numOfEnemies;
@@ -26,6 +27,7 @@ public class FightRoom extends Room {
         this.width = xy.x;
         this.height = xy.y;
         this.display = new Object[width][height];
+        this.enemies = new ArrayList<>();
         chance = 30;
 
         this.generateEnemies();
@@ -40,6 +42,7 @@ public class FightRoom extends Room {
                 Enemies enemy = GameData.getEneList().get(chooseEnemy);
                 enemy.setLocation(xy);
                 this.setObj(xy.x, xy.y, enemy);
+                enemies.add(enemy);
             }
         }
     }

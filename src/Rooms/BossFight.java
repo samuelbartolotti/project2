@@ -31,6 +31,7 @@ public class BossFight extends Room {
         this.height = fight.height;
 
         this.display =  fight.getDisplay();
+        this.enemies = fight.getEnemies();
         this.numOfBoss = 1;
         chance = 10;
 
@@ -46,6 +47,7 @@ public class BossFight extends Room {
                 Boss boss = GameData.getBossList().get(chooseBoss);
                 boss.setLocation(xy);
                 this.setObj(xy.x, xy.y, boss);
+                enemies.add(boss);
             }
         }
     }

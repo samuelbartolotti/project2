@@ -7,6 +7,7 @@ import Items.Consumables;
 import Player.Player;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Room extends RandomGenerator {
     protected final int maxLength = 20;
@@ -18,6 +19,7 @@ public abstract class Room extends RandomGenerator {
     protected boolean west;
     protected int ID;
     protected int chance;
+    protected ArrayList<Enemies> enemies;
 
     protected int width;
     protected int height;
@@ -114,6 +116,18 @@ public abstract class Room extends RandomGenerator {
         return room.getObj(x, y) == null;
     }
 
+    public ArrayList<Enemies> getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(ArrayList<Enemies> enemies) {
+        this.enemies = enemies;
+    }
+
+    public void addEnemies(Enemies enemies) {
+        this.enemies.add(enemies);
+    }
+
     public Point generateRoomXY() {
         int width = rnd(minLength, maxLength);
         int length = rnd(minLength, maxLength);
@@ -206,14 +220,8 @@ public abstract class Room extends RandomGenerator {
     }
 
     public void fight(Player player) {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                Object enemy = this.getObj(j,i);
-
-                if (enemy instanceof Enemies) {
-                    ((Enemies) enemy).playRound(player, this);
-                }
-            }
+        for(Enemies enemy: enemies){
+            enemy.playRound(player, this);
         }
     }
 

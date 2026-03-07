@@ -99,6 +99,7 @@ public abstract class Enemies {
         if(room.getWidth() > x && room.getHeight() > y && 0 <=x && 0 <=y && room.getObj(x, y) == null) {
             room.setObj(getX(), getY(), null);
             room.setObj(x, y, this);
+            setLocation(new Point(x, y));
         }
     }
 
