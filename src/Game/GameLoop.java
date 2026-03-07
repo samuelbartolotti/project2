@@ -38,13 +38,23 @@ public class GameLoop extends ConsoleUI {
         };
 
         for(int i = 0; i < numberOfLevels; i++) {
+            if(player.isDead()){
+                super.println("You are dead");
+                return;
+            }
+
             Map map = new Map();
             map.setPlayer(player);
             player.setMap(map);
 
             while(true) {
+                if(player.isDead()){
+                    return;
+                }
+
                 Room room = map.getRoom(player.getCurrentRoom());
                 super.println(room.displayRoom());
+                super.println(player.displayStats());
                 String s = super.scanLine();
 
                 try {

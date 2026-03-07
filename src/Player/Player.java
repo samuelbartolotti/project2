@@ -2,6 +2,7 @@ package Player;
 
 import Exceptions.CantWalkIntoWall;
 import Exceptions.PlaceInFrontOfYouIsOccupied;
+import Items.Weapons;
 import Rooms.Room;
 import Map.Map;
 
@@ -25,6 +26,7 @@ public class Player {
     private Map map;
     private boolean inFight;
     private boolean inMenu;
+    private boolean dead;
 
     public String getName() {
         return name;
@@ -93,9 +95,10 @@ public class Player {
     }
 
     public void takeDamage(int damage) {
-        this.hp -= damage;
+        this.hp -= (int) (damage/defence);
         if (this.hp < 0) {
             addDeath();
+            setDead(true);
         }
     }
 
@@ -223,6 +226,14 @@ public class Player {
         this.inMenu = inMenu;
     }
 
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
     public void movePlayer(int x, int y, int before, Room room) {
         if (x < room.getWidth() && y < room.getHeight() && x >= 0 && y >= 0) {
             if (room.isPlaceEmpty(x, y, room)) {
@@ -319,11 +330,33 @@ public class Player {
         return false;
     }
 
+    public String displayStats(){
+        Weapons slot1 = (Weapons) inv.getItem(1);
+        Weapons slot2 = (Weapons) inv.getItem(2);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Stats:").append("\n\n");
+        sb.append("maxHp - ").append(maxHp).append("\n");
+        sb.append("hp - ").append(hp).append("\n");
+        sb.append("defence - ").append(defence).append("\n");
+        sb.append("attackPower - ").append(attack).append("\n");
+
+        if(slot1 != null) {
+            sb.append("slot 1 - ").append(slot1.getRarity().colorize(slot1.getName())).append("\n");
+        }
+
+        if(slot2 != null) {
+            sb.append("slot 2 - ").append(slot2.getRarity().colorize(slot2.getName())).append("\n");
+        }
+        sb.append("Gold - ").append(playersGold).append("\n");
+        return sb.toString();
+    }
+
     public Player() {
         kills = 0;
         deaths = 0;
         level = 1;
-        hp = 100;
+        hp = 1000;
         defence = 1;
         attack = 1;
         playersGold = 0;

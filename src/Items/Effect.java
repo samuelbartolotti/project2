@@ -18,13 +18,13 @@ public enum Effect {
     DEFENCE {
         @Override
         public void apply(Player player, double rarityEffect) {
-            player.addDefence(rarityEffect);
+            player.addDefence(rarityEffect*10);
         }
     },
     ATTACK {
         @Override
         public void apply(Player player, double rarityEffect) {
-            player.addAttack(rarityEffect);
+            player.addAttack(rarityEffect*10);
         }
     };
 

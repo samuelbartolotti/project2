@@ -209,12 +209,8 @@ public abstract class Room extends RandomGenerator {
     }
 
     public boolean isInFight() {
-        if (this instanceof FightRoom || this instanceof BossFight) {
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    if (display[j][i] instanceof Enemies) return true;
-                }
-            }
+        if(this instanceof FightRoom || this instanceof BossFight) {
+            return !enemies.isEmpty();
         }
         return false;
     }
@@ -237,8 +233,6 @@ public abstract class Room extends RandomGenerator {
         } else {
             thirdWidth = (int) Math.ceil((double) width / 3);
         }
-
-        System.out.println(thirdWidth);
 
         if (height % 3 == 0 || height % 3 == 1) {
             thirdHeight = height / 3;
