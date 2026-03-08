@@ -22,6 +22,8 @@ public class Attack extends Command {
 
                 if(enemy.getHp() < 0){
                     room.setObj(x,y,null);
+                    room.getEnemies().remove(enemy);
+                    player.addHp(20);
                     player.addGold(5);
                 }
                 super.println("You attacked " + enemy.getName() + ".");

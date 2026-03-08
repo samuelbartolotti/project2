@@ -39,7 +39,7 @@ public class FightRoom extends Room {
             Point xy = super.generateXY(this.width, this.height);
             if(this.getObj(xy.x, xy.y) == null){
                 int chooseEnemy = rnd(0, GameData.getEneList().size()-1);
-                Enemies enemy = GameData.getEneList().get(chooseEnemy);
+                Enemies enemy = new Enemy(GameData.getEneList().get(chooseEnemy));
                 enemy.setLocation(xy);
                 this.setObj(xy.x, xy.y, enemy);
                 enemies.add(enemy);

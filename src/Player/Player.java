@@ -2,6 +2,7 @@ package Player;
 
 import Exceptions.CantWalkIntoWall;
 import Exceptions.PlaceInFrontOfYouIsOccupied;
+import Exceptions.YouAreInFightException;
 import Items.Weapons;
 import Rooms.Room;
 import Map.Map;
@@ -95,7 +96,7 @@ public class Player {
     }
 
     public void takeDamage(int damage) {
-        this.hp -= (int) (damage/defence);
+        this.hp -= (int) (damage / defence);
         if (this.hp < 0) {
             addDeath();
             setDead(true);
@@ -239,7 +240,7 @@ public class Player {
             if (room.isPlaceEmpty(x, y, room)) {
                 this.setPosition(new Point(x, y));
                 room.setObj(x, y, this);
-                this.positionBefore(x,y,before,room);
+                this.positionBefore(x, y, before, room);
 
             } else {
                 this.setFacing(new Point(x, y));
@@ -247,11 +248,11 @@ public class Player {
             }
 
         } else {
-            if(!moveToAnotherRoom(x,y,room)) {
+            if (!moveToAnotherRoom(x, y, room)) {
                 throw new CantWalkIntoWall("You are at the end of the room. You cannot walk into wall.");
 
             } else {
-              this.positionBefore(x,y,before,room);
+                this.positionBefore(x, y, before, room);
             }
         }
     }
@@ -267,70 +268,73 @@ public class Player {
     }
 
     public boolean moveToAnotherRoom(int x, int y, Room room) {
-        int width = room.getWidth();
-        int height = room.getHeight();
+        if (!inFight) {
+            int width = room.getWidth();
+            int height = room.getHeight();
 
-        int thirdWidth;
-        if (width % 3 == 0 || width % 3 == 1) {
-            thirdWidth = width / 3;
+            int thirdWidth;
+            if (width % 3 == 0 || width % 3 == 1) {
+                thirdWidth = width / 3;
+            } else {
+                thirdWidth = (int) Math.ceil(width / 3.0);
+            }
+
+            int thirdHeight;
+            if (height % 3 == 0 || height % 3 == 1) {
+                thirdHeight = height / 3;
+            } else {
+                thirdHeight = (int) Math.ceil(height / 3.0);
+            }
+
+            int mapX = (int) this.currentRoom.getX();
+            int mapY = (int) this.currentRoom.getY();
+
+            if (room.isNorth() && y == height && x >= thirdWidth && x < width - thirdWidth) {
+                Point newPoint = new Point(mapX, mapY + 1);
+                Room newRoom = this.getRoom(newPoint);
+
+                this.setCurrentRoom(newPoint);
+                this.position = new Point(newRoom.getWidth() / 2, 0);
+                newRoom.setObj(this.getX(), this.getY(), this);
+                return true;
+            }
+
+            if (room.isSouth() && y == -1 && x >= thirdWidth && x < width - thirdWidth) {
+                Point newPoint = new Point(mapX, mapY - 1);
+                Room newRoom = this.getRoom(newPoint);
+
+                this.setCurrentRoom(newPoint);
+                this.position = new Point(newRoom.getWidth() / 2, newRoom.getHeight() - 1); // opraveno
+                newRoom.setObj(this.getX(), this.getY(), this);
+                return true;
+            }
+
+            if (room.isWest() && x == -1 && y >= thirdHeight && y < height - thirdHeight) {
+                Point newPoint = new Point(mapX - 1, mapY);
+                Room newRoom = this.getRoom(newPoint);
+
+                this.setCurrentRoom(newPoint);
+                this.position = new Point(newRoom.getWidth() - 1, newRoom.getHeight() / 2);
+                newRoom.setObj(this.getX(), this.getY(), this);
+                return true;
+            }
+
+            if (room.isEast() && x == width && y >= thirdHeight && y < height - thirdHeight) {
+                Point newPoint = new Point(mapX + 1, mapY);
+                Room newRoom = this.getRoom(newPoint);
+
+                this.setCurrentRoom(newPoint);
+                this.position = new Point(0, newRoom.getHeight() / 2);
+                newRoom.setObj(this.getX(), this.getY(), this);
+                return true;
+            }
         } else {
-            thirdWidth = (int) Math.ceil(width / 3.0);
+            throw new YouAreInFightException("You cannot leave room, while in fight.");
         }
-
-        int thirdHeight;
-        if (height % 3 == 0 || height % 3 == 1) {
-            thirdHeight = height / 3;
-        } else {
-            thirdHeight = (int) Math.ceil(height / 3.0);
-        }
-
-        int mapX = (int) this.currentRoom.getX();
-        int mapY = (int) this.currentRoom.getY();
-
-        if (room.isNorth() && y == height && x >= thirdWidth && x < width - thirdWidth) {
-            Point newPoint = new Point(mapX, mapY + 1);
-            Room newRoom = this.getRoom(newPoint);
-
-            this.setCurrentRoom(newPoint);
-            this.position = new Point(newRoom.getWidth() / 2, 0);
-            newRoom.setObj(this.getX(), this.getY(), this);
-            return true;
-        }
-
-        if (room.isSouth() && y == -1 && x >= thirdWidth && x < width - thirdWidth) {
-            Point newPoint = new Point(mapX, mapY - 1);
-            Room newRoom = this.getRoom(newPoint);
-
-            this.setCurrentRoom(newPoint);
-            this.position = new Point(newRoom.getWidth() / 2, newRoom.getHeight() - 1); // opraveno
-            newRoom.setObj(this.getX(), this.getY(), this);
-            return true;
-        }
-
-        if (room.isWest() && x == -1 && y >= thirdHeight && y < height - thirdHeight) {
-            Point newPoint = new Point(mapX - 1, mapY);
-            Room newRoom = this.getRoom(newPoint);
-
-            this.setCurrentRoom(newPoint);
-            this.position = new Point(newRoom.getWidth() - 1, newRoom.getHeight() / 2);
-            newRoom.setObj(this.getX(), this.getY(), this);
-            return true;
-        }
-
-        if (room.isEast() && x == width && y >= thirdHeight && y < height - thirdHeight) {
-            Point newPoint = new Point(mapX + 1, mapY);
-            Room newRoom = this.getRoom(newPoint);
-
-            this.setCurrentRoom(newPoint);
-            this.position = new Point(0, newRoom.getHeight() / 2);
-            newRoom.setObj(this.getX(), this.getY(), this);
-            return true;
-        }
-
         return false;
     }
 
-    public String displayStats(){
+    public String displayStats() {
         Weapons slot1 = (Weapons) inv.getItem(1);
         Weapons slot2 = (Weapons) inv.getItem(2);
 
@@ -341,11 +345,11 @@ public class Player {
         sb.append("defence - ").append(defence).append("\n");
         sb.append("attackPower - ").append(attack).append("\n");
 
-        if(slot1 != null) {
+        if (slot1 != null) {
             sb.append("slot 1 - ").append(slot1.getRarity().colorize(slot1.getName())).append("\n");
         }
 
-        if(slot2 != null) {
+        if (slot2 != null) {
             sb.append("slot 2 - ").append(slot2.getRarity().colorize(slot2.getName())).append("\n");
         }
         sb.append("Gold - ").append(playersGold).append("\n");
@@ -356,13 +360,14 @@ public class Player {
         kills = 0;
         deaths = 0;
         level = 1;
+        maxHp = 1000;
         hp = 1000;
         defence = 1;
         attack = 1;
         playersGold = 0;
         currentRoom = new Point(5, 0);
         position = new Point(5, 0);
-        facing = new Point(5,1);
+        facing = new Point(5, 1);
         currentSlot = 1;
 
         this.inv = new Inventory();

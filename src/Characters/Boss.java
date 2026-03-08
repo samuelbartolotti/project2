@@ -5,6 +5,10 @@ public class Boss extends Enemies{
         super(hp, damage, name, cooldown);
     }
 
+    public Boss(Boss boss) {
+        super(boss.hp, boss.damage, boss.name, boss.cooldown);
+    }
+
     @Override
     public String toString() {
         return "B";

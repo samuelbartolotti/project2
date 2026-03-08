@@ -57,6 +57,8 @@ public class GameLoop extends ConsoleUI {
                 super.println(player.displayStats());
                 String s = super.scanLine();
 
+                player.setInFight(room.isInFight());
+
                 try {
                     for (Command command : commands) {
                         command.execute(s, player, room);
@@ -64,8 +66,6 @@ public class GameLoop extends ConsoleUI {
                 } catch (Exception e) {
                     super.println(e.getMessage());
                 }
-
-                player.setInFight(room.isInFight());
 
                 if(player.isInFight() && !player.isInMenu()) {
                     room.fight(player);

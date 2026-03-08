@@ -44,7 +44,7 @@ public class BossFight extends Room {
             Point xy = super.generateXY(this.width, this.height);
             if(this.getObj(xy.x, xy.y) == null){
                 int chooseBoss = rnd(0, GameData.getBossList().size()-1);
-                Boss boss = GameData.getBossList().get(chooseBoss);
+                Boss boss = new Boss(GameData.getBossList().get(chooseBoss));
                 boss.setLocation(xy);
                 this.setObj(xy.x, xy.y, boss);
                 enemies.add(boss);

@@ -32,16 +32,28 @@ public class Interact extends Command {
 
                 } else if (room instanceof Shop && o.equals("O")) {
                     boolean inMenu = true;
-                    super.println(((Shop) room).itemsToString() + "\n\n" + "Choose item by writing its number in list order, or close this menu by writing esc.");
 
                     while (inMenu) {
+                        super.println(((Shop) room).itemsToString() + "\n\n" + "Choose item by writing its number in list order, or close this menu by writing esc.");
                         String s = super.scanLine();
-                        int choice = Integer.parseInt(s);
-                        if (s.equals("esc")) {
+
+                        if (s.equalsIgnoreCase("esc")) {
                             inMenu = false;
-                        } else if (choice >= 1 && choice <= 3) {
-                            Shop shop = (Shop) room;
-                            shop.buy(shop.choose(choice), player);
+                            continue;
+                        }
+
+                        try {
+                            int choice = Integer.parseInt(s);
+
+                            if (choice >= 1 && choice <= 3) {
+                                Shop shop = (Shop) room;
+                                shop.buy(shop.choose(choice), player);
+                            } else {
+                                super.println("Wrong input");
+                            }
+
+                        } catch (NumberFormatException e) {
+                            super.println("Wrong input");
                         }
                     }
                 }
