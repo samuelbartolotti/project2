@@ -1,6 +1,7 @@
 package Map;
 
 import Interface.RandomGenerator;
+import Rooms.BossFight;
 import Rooms.Corridor;
 import Rooms.EmptyRoom;
 import Rooms.Room;
@@ -61,29 +62,38 @@ public class Map extends RandomGenerator {
     }
 
     public void setPlayer(Player player){
-        map[5][0].setObj(player.getX(), player.getY(), player);
+        Room room = map[5][0];
+        player.setCurrentRoom(new Point(5,0));
+        player.setPosition(new Point(room.getWidth()/2,0));
+        room.setObj(player.getX(), player.getY(), player);
     }
 
     public void generateMap() {
         Point roomXY = new Point(5,1);
 
+        boolean lastRoom = false;
+
         for(int i = 0; i < roomCount - 2; i++) {
             int way = rnd(1,3);
+
+            if(i+1==roomCount-2) {
+                lastRoom = true;
+            }
 
             try {
 
                 switch (way) {
                     case 1 -> {
                         roomXY.x++;
-                        if(!isPlaceEmpty(roomXY)){roomXY.x--; i--;}
+                        if(!isPlaceEmpty(roomXY, lastRoom)) {roomXY.x--; i--;}
                     }
                     case 2 -> {
                         roomXY.y++;
-                        if(!isPlaceEmpty(roomXY)){roomXY.y--; i--;}
+                        if(!isPlaceEmpty(roomXY, lastRoom)) {roomXY.y--; i--;}
                     }
                     case 3 -> {
                         roomXY.x--;
-                        if(!isPlaceEmpty(roomXY)){roomXY.x++; i--;}
+                        if(!isPlaceEmpty(roomXY, lastRoom)) {roomXY.x++; i--;}
                     }
                 }
 
@@ -93,9 +103,14 @@ public class Map extends RandomGenerator {
         }
     }
 
-    public boolean isPlaceEmpty(Point roomXY){
+    public boolean isPlaceEmpty(Point roomXY, boolean lastRoom){
         if(map[roomXY.x][roomXY.y] == null) {
-            map[roomXY.x][roomXY.y] = Room.generateRoomType();
+            if(lastRoom) {
+                map[roomXY.x][roomXY.y] = new BossFight();
+            } else {
+                map[roomXY.x][roomXY.y] = Room.generateRoomType();
+            }
+
             return true;
         } else {
             return false;

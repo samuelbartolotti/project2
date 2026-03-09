@@ -158,7 +158,6 @@ public abstract class Room extends RandomGenerator {
         Room[] rooms = {
                 new EmptyRoom(),
                 new FightRoom(),
-                new BossFight(),
                 new Shop(),
                 new ChestRoom()
         };

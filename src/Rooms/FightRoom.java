@@ -28,7 +28,7 @@ public class FightRoom extends Room {
         this.height = xy.y;
         this.display = new Object[width][height];
         this.enemies = new ArrayList<>();
-        chance = 30;
+        chance = 35;
 
         this.generateEnemies();
         generateChances();

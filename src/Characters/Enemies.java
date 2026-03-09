@@ -80,7 +80,12 @@ public abstract class Enemies {
     }
 
     public void attack(Player player) {
-        player.takeDamage(damage);
+        int x = Math.abs(this.getX() - player.getX());
+        int y = Math.abs(this.getY() - player.getY());
+
+        if (x <= 1 && y <= 1) {
+            player.takeDamage(damage);
+        }
     }
 
     public void move(Player player, Room room) {

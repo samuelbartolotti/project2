@@ -38,23 +38,20 @@ public class GameLoop extends ConsoleUI {
         };
 
         for(int i = 0; i < numberOfLevels; i++) {
-            if(player.isDead()){
-                super.println("You are dead");
-                return;
-            }
-
             Map map = new Map();
             map.setPlayer(player);
             player.setMap(map);
 
             while(true) {
                 if(player.isDead()){
+                    super.println("You are dead");
                     return;
                 }
 
                 Room room = map.getRoom(player.getCurrentRoom());
                 super.println(room.displayRoom());
                 super.println(player.displayStats());
+                super.print(">");
                 String s = super.scanLine();
 
                 player.setInFight(room.isInFight());
@@ -69,6 +66,11 @@ public class GameLoop extends ConsoleUI {
 
                 if(player.isInFight() && !player.isInMenu()) {
                     room.fight(player);
+                }
+
+                if(room instanceof BossFight && room.getEnemies().isEmpty()) {
+                    super.println("You concured the boss. Next level is awaiting you.");
+                    break;
                 }
             }
         }

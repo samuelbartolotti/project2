@@ -360,14 +360,11 @@ public class Player {
         kills = 0;
         deaths = 0;
         level = 1;
-        maxHp = 1000;
-        hp = 1000;
+        maxHp = 100;
+        hp = 100;
         defence = 1;
         attack = 1;
         playersGold = 0;
-        currentRoom = new Point(5, 0);
-        position = new Point(5, 0);
-        facing = new Point(5, 1);
         currentSlot = 1;
 
         this.inv = new Inventory();

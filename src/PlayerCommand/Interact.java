@@ -48,6 +48,7 @@ public class Interact extends Command {
                             if (choice >= 1 && choice <= 3) {
                                 Shop shop = (Shop) room;
                                 shop.buy(shop.choose(choice), player);
+                                return;
                             } else {
                                 super.println("Wrong input");
                             }

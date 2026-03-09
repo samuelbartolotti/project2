@@ -99,15 +99,16 @@ public class Shop extends Room {
         if (o instanceof Weapons || o instanceof Consumables) {
             Inventory inv = player.getInv();
             int price = ((Item) o).getPrice();
-            int place = inv.isInventoryFull();
+            int current = player.getCurrentSlot();
+            boolean place = inv.isInvEmpty(current);
 
             if (player.getPlayersGold() - price < 0) {
                 throw new NotEnoughManyException("You don't have enough money, to buy this item");
 
-            } else if (place != -1 && o instanceof Weapons) {
-                inv.addToInventory((Weapons) o, place);
+            } else if (place && o instanceof Weapons) {
+                inv.addToInventory((Weapons) o, current);
 
-            } else if (place != -1) {
+            } else if (place) {
                 ((Consumables) o).useConsumable(player);
 
             } else {
