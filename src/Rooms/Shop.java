@@ -3,6 +3,7 @@ package Rooms;
 import Exceptions.FullInventoryException;
 import Exceptions.NotEnoughManyException;
 import Game.GameData;
+import Interface.UI;
 import Items.Consumables;
 import Items.Item;
 import Items.Weapons;

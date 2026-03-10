@@ -109,9 +109,10 @@ public abstract class Enemies {
     }
 
     public void playRound(Player player, Room room) {
-        if (RandomGenerator.rnd(0, 2) == 0) {
+        int choose = RandomGenerator.rnd(0, 4);
+        if (choose >=0 && choose <=1) {
             attack(player);
-        } else {
+        } else if (choose>=2 && choose <=3){
             move(player, room);
         }
     }

@@ -9,7 +9,7 @@ import Rooms.Room;
 public class DropItem extends Command {
 
     @Override
-    public void execute(String str, Player player, Room room) {
+    public boolean execute(String str, Player player, Room room) {
         if (str.equals("q")) {
             Object o = room.getObj(player.facingX(), player.facingY());
             Object item = player.getInv().getItem(player.getCurrentSlot());
@@ -22,7 +22,9 @@ public class DropItem extends Command {
             } else {
                 throw new PlaceInFrontOfYouIsOccupied("You are currently facing an occupied square");
             }
+            return true;
         }
+        return false;
     }
 
     @Override

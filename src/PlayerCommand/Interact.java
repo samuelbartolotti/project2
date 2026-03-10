@@ -11,7 +11,7 @@ import Rooms.SpawnType;
 public class Interact extends Command {
 
     @Override
-    public void execute(String str, Player player, Room room) {
+    public boolean execute(String str, Player player, Room room) {
         if (str.equals("e")) {
             Object o = room.getDisplay()[player.facingX()][player.facingY()];
             int x = player.facingX();
@@ -48,7 +48,7 @@ public class Interact extends Command {
                             if (choice >= 1 && choice <= 3) {
                                 Shop shop = (Shop) room;
                                 shop.buy(shop.choose(choice), player);
-                                return;
+                                return true;
                             } else {
                                 super.println("Wrong input");
                             }
@@ -61,7 +61,9 @@ public class Interact extends Command {
             } else {
                 throw new PlaceIsEmpty("There is no action to be made. The place infront is empty.");
             }
+            return true;
         }
+        return false;
     }
 
     @Override

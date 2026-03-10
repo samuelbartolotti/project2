@@ -10,7 +10,7 @@ import Characters.Enemies;
 public class Attack extends Command {
 
     @Override
-    public void execute(String str, Player player, Room room) {
+    public boolean execute(String str, Player player, Room room) {
         if(str.equals("f")){
             int x = player.facingX();
             int y = player.facingY();
@@ -27,12 +27,14 @@ public class Attack extends Command {
                     player.addGold(2);
                 }
                 super.println("You attacked " + enemy.getName() + ".");
+                return true;
             } else if (wep instanceof Weapons){
                 throw new NoneEnemyInFrontOfYou("You are not facing enemy");
             } else {
                 throw new NoneWeaponInYourSlot("Your current slot does not contain weapon");
             }
         }
+        return false;
     }
 
     @Override

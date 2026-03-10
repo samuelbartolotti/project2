@@ -8,7 +8,7 @@ public class ESC extends Command {
 
 
     @Override
-    public void execute(String str, Player player, Room room) {
+    public boolean execute(String str, Player player, Room room) {
         if (str.equals("esc")) {
             if (player.isInMenu()) {
                 player.setInMenu(false);
@@ -16,7 +16,9 @@ public class ESC extends Command {
                 player.setInMenu(true);
                 super.println(GameData.getText().getFirst());
             }
+            return true;
         }
+        return false;
     }
 
     @Override

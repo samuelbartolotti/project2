@@ -235,7 +235,7 @@ public class Player {
         this.dead = dead;
     }
 
-    public void movePlayer(int x, int y, int before, Room room) {
+    public boolean movePlayer(int x, int y, int before, Room room) {
         if (x < room.getWidth() && y < room.getHeight() && x >= 0 && y >= 0) {
             if (room.isPlaceEmpty(x, y, room)) {
                 this.setPosition(new Point(x, y));
@@ -246,6 +246,7 @@ public class Player {
                 this.setFacing(new Point(x, y));
                 throw new PlaceInFrontOfYouIsOccupied("There is something in your path.");
             }
+            return true;
 
         } else {
             if (!moveToAnotherRoom(x, y, room)) {
@@ -253,6 +254,7 @@ public class Player {
 
             } else {
                 this.positionBefore(x, y, before, room);
+                return true;
             }
         }
     }

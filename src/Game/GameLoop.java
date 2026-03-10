@@ -43,6 +43,8 @@ public class GameLoop extends ConsoleUI {
             player.setMap(map);
 
             while(true) {
+                boolean didCommandRun = false;
+
                 if(player.isDead()){
                     super.println("You are dead");
                     return;
@@ -58,14 +60,19 @@ public class GameLoop extends ConsoleUI {
 
                 try {
                     for (Command command : commands) {
-                        command.execute(s, player, room);
+                       if(command.execute(s, player, room)){
+                           didCommandRun = true;
+                           break;
+                       }
                     }
                 } catch (Exception e) {
                     super.println(e.getMessage());
                 }
 
-                if(player.isInFight() && !player.isInMenu()) {
+                if(player.isInFight() && !player.isInMenu() && didCommandRun) {
                     room.fight(player);
+                } else if(!didCommandRun){
+                    super.println("Wrong input.");
                 }
 
                 if(room instanceof BossFight && room.getEnemies().isEmpty()) {
