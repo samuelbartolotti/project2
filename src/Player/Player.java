@@ -199,6 +199,10 @@ public class Player {
         this.playersGold += amount;
     }
 
+    public void subtractGold(int amount){
+        this.playersGold -= amount;
+    }
+
     public Map getMap() {
         return map;
     }

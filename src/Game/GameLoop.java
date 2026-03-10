@@ -55,6 +55,7 @@ public class GameLoop extends ConsoleUI {
                 super.println(player.displayStats());
                 super.print(">");
                 String s = super.scanLine();
+                s = s.trim();
 
                 player.setInFight(room.isInFight());
 

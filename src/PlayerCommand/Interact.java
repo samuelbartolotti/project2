@@ -36,6 +36,7 @@ public class Interact extends Command {
                     while (inMenu) {
                         super.println(((Shop) room).itemsToString() + "\n\n" + "Choose item by writing its number in list order, or close this menu by writing esc.");
                         String s = super.scanLine();
+                        s = s.trim();
 
                         if (s.equalsIgnoreCase("esc")) {
                             inMenu = false;
@@ -48,6 +49,7 @@ public class Interact extends Command {
                             if (choice >= 1 && choice <= 3) {
                                 Shop shop = (Shop) room;
                                 shop.buy(shop.choose(choice), player);
+                                inMenu = false;
                                 return true;
                             } else {
                                 super.println("Wrong input");

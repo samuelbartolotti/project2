@@ -84,16 +84,7 @@ public class Shop extends Room {
     }
 
     public Object choose(int choice) {
-        int current = 0;
-        for (int i = 0; i < numberOfItems; i++) {
-            if (current == choice && i < weapons.size()) {
-                return weapons.get(current);
-            } else if (current == choice) {
-                return consumables.get(current - weapons.size());
-            }
-            current++;
-        }
-        return null;
+        return items.get(choice-1);
     }
 
     public void buy(Object o, Player player) {
@@ -108,9 +99,11 @@ public class Shop extends Room {
 
             } else if (place && o instanceof Weapons) {
                 inv.addToInventory((Weapons) o, current);
+                player.subtractGold(((Weapons) o).getPrice());
 
-            } else if (place) {
+            } else if (o instanceof Consumables) {
                 ((Consumables) o).useConsumable(player);
+                player.subtractGold(((Consumables) o).getPrice());
 
             } else {
                 throw new FullInventoryException("You don't have enough space in your inventory");
