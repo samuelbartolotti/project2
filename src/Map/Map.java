@@ -68,6 +68,7 @@ public class Map extends RandomGenerator {
         player.setPosition(new Point(half,0));
         player.setFacing(new Point(half, 1));
         room.setObj(player.getX(), player.getY(), player);
+        player.setHp(player.getMaxHp());
     }
 
     public void generateMap() {
