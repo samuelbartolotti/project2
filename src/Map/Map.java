@@ -11,8 +11,8 @@ import java.awt.*;
 
 public class Map extends RandomGenerator {
     private Room[][] map;
-    private final int width = 11;
-    private final int height = 11;
+    private final int width = 50;
+    private final int height = 50;
     private final int roomCount = 10;
 
     public Room[][] getMap() {
@@ -33,8 +33,8 @@ public class Map extends RandomGenerator {
 
     public Map() {
         this.map = new Room[width][height];
-        map[5][0] = new EmptyRoom();
-        map[5][1] = Room.generateRoomType();
+        map[25][0] = new EmptyRoom();
+        map[25][1] = Room.generateRoomType();
 
         generateMap();
         generateCorridors();
