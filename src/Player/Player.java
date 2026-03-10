@@ -244,7 +244,7 @@ public class Player {
 
             } else {
                 this.setFacing(new Point(x, y));
-                throw new PlaceInFrontOfYouIsOccupied("There is something in your path.");
+                return true;
             }
             return true;
 
@@ -297,6 +297,7 @@ public class Player {
 
                 this.setCurrentRoom(newPoint);
                 this.position = new Point(newRoom.getWidth() / 2, 0);
+                this.facing = new Point(newRoom.getWidth() / 2, 1);
                 newRoom.setObj(this.getX(), this.getY(), this);
                 return true;
             }
@@ -306,7 +307,8 @@ public class Player {
                 Room newRoom = this.getRoom(newPoint);
 
                 this.setCurrentRoom(newPoint);
-                this.position = new Point(newRoom.getWidth() / 2, newRoom.getHeight() - 1); // opraveno
+                this.position = new Point(newRoom.getWidth() / 2, newRoom.getHeight() - 1);
+                this.facing = new Point(newRoom.getWidth() / 2, newRoom.getHeight() - 2);
                 newRoom.setObj(this.getX(), this.getY(), this);
                 return true;
             }
@@ -317,6 +319,7 @@ public class Player {
 
                 this.setCurrentRoom(newPoint);
                 this.position = new Point(newRoom.getWidth() - 1, newRoom.getHeight() / 2);
+                this.facing = new Point(newRoom.getWidth() - 2, newRoom.getHeight() / 2);
                 newRoom.setObj(this.getX(), this.getY(), this);
                 return true;
             }
@@ -327,6 +330,7 @@ public class Player {
 
                 this.setCurrentRoom(newPoint);
                 this.position = new Point(0, newRoom.getHeight() / 2);
+                this.facing = new Point(1, newRoom.getHeight() / 2);
                 newRoom.setObj(this.getX(), this.getY(), this);
                 return true;
             }
