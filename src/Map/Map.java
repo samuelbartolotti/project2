@@ -62,9 +62,9 @@ public class Map extends RandomGenerator {
     }
 
     public void setPlayer(Player player){
-        Room room = map[5][0];
+        Room room = map[25][0];
         int half = room.getWidth()/2;
-        player.setCurrentRoom(new Point(5,0));
+        player.setCurrentRoom(new Point(25,0));
         player.setPosition(new Point(half,0));
         player.setFacing(new Point(half, 1));
         room.setObj(player.getX(), player.getY(), player);
@@ -72,7 +72,7 @@ public class Map extends RandomGenerator {
     }
 
     public void generateMap() {
-        Point roomXY = new Point(5,1);
+        Point roomXY = new Point(25,1);
 
         boolean lastRoom = false;
 
