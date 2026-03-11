@@ -30,17 +30,15 @@ public class Interact extends Command {
                     ((Consumables) o).useConsumable(player);
                     room.setObj(x, y, null);
 
-                } else if (room instanceof Shop && o.equals("O")) {
-                    boolean inMenu = true;
+                } else if (room instanceof Shop && o.equals("S")) {
 
-                    while (inMenu) {
+                    while (true) {
                         super.println(((Shop) room).itemsToString() + "\n\n" + "Choose item by writing its number in list order, or close this menu by writing esc.");
                         String s = super.scanLine();
                         s = s.trim();
 
                         if (s.equalsIgnoreCase("esc")) {
-                            inMenu = false;
-                            continue;
+                            break;
                         }
 
                         try {
@@ -49,7 +47,7 @@ public class Interact extends Command {
                             if (choice >= 1 && choice <= 3) {
                                 Shop shop = (Shop) room;
                                 shop.buy(shop.choose(choice), player);
-                                inMenu = false;
+                                player.setInMenu(false);
                                 return true;
                             } else {
                                 super.println("Wrong input");

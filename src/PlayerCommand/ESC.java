@@ -10,12 +10,19 @@ public class ESC extends Command {
     @Override
     public boolean execute(String str, Player player, Room room) {
         if (str.equals("esc")) {
-            if (player.isInMenu()) {
-                player.setInMenu(false);
-            } else {
-                player.setInMenu(true);
-                super.println(GameData.getText().getFirst());
-            }
+            player.setInMenu(true);
+            super.println(GameData.getText().getFirst());
+
+                while (true) {
+                    String s = super.scanLine();
+                    s = s.trim();
+                    if (s.equalsIgnoreCase("esc")) {
+                        player.setInMenu(false);
+                        break;
+                    } else {
+                        super.println("To close this menu type esc.");
+                    }
+                }
             return true;
         }
         return false;

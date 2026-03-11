@@ -6,13 +6,13 @@ public enum Effect {
     HEAL {
         @Override
         public void apply(Player player, double rarityEffect) {
-            player.addHp((int) rarityEffect*1000);
+            player.addHp((int) (rarityEffect*1000));
         }
     },
     ADDMAXHEALTH {
         @Override
         public void apply(Player player, double rarityEffect) {
-            player.addMaxHp((int) rarityEffect*100);
+            player.addMaxHp((int) (rarityEffect * 100));
         }
     },
     DEFENCE {

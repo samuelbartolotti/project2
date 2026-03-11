@@ -37,15 +37,15 @@ public class GameLoop extends ConsoleUI {
                 new Move()
         };
 
-        for(int i = 0; i < numberOfLevels; i++) {
+        for (int i = 0; i < numberOfLevels; i++) {
             Map map = new Map();
             map.setPlayer(player);
             player.setMap(map);
 
-            while(true) {
+            while (true) {
                 boolean didCommandRun = false;
 
-                if(player.isDead()){
+                if (player.isDead()) {
                     super.closeSc();
                     super.println("\u001B[31m\n\n\n\n\n\n\n                 You died");
                     return;
@@ -60,24 +60,26 @@ public class GameLoop extends ConsoleUI {
 
                 player.setInFight(room.isInFight());
 
+                super.println("======================================================================================================================================================================================================");
+
                 try {
                     for (Command command : commands) {
-                       if(command.execute(s, player, room)){
-                           didCommandRun = true;
-                           break;
-                       }
+                        if (command.execute(s, player, room)) {
+                            didCommandRun = true;
+                            break;
+                        }
                     }
                 } catch (Exception e) {
                     super.println(e.getMessage());
                 }
 
-                if(player.isInFight() && !player.isInMenu() && didCommandRun) {
+                if (player.isInFight()&& didCommandRun) {
                     room.fight(player);
-                } else if(!didCommandRun){
+                } else if (!didCommandRun) {
                     super.println("Wrong input.");
                 }
 
-                if(room instanceof BossFight && room.getEnemies().isEmpty()) {
+                if (room instanceof BossFight && room.getEnemies().isEmpty()) {
                     super.println("You concured the boss. Next level is awaiting you.");
                     break;
                 }

@@ -1,8 +1,9 @@
 package Items;
 
+import Interface.ConsoleUI;
 import Interface.RandomGenerator;
 
-public abstract class Item extends RandomGenerator {
+public abstract class Item extends ConsoleUI {
     protected String name;
     protected int damage;
     protected int range;

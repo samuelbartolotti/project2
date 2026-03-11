@@ -36,6 +36,7 @@ public class Consumables extends Item {
 
     public void useConsumable(Player player) {
         effect.apply(player, rarity.returnEffect());
+        super.println("Added effect: " + effect.name());
     }
 
     @Override
