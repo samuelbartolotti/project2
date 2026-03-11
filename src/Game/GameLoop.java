@@ -46,7 +46,8 @@ public class GameLoop extends ConsoleUI {
                 boolean didCommandRun = false;
 
                 if(player.isDead()){
-                    super.println("You died");
+                    super.closeSc();
+                    super.println("\u001B[31m\n\n\n\n\n\n\n                 You died");
                     return;
                 }
 
