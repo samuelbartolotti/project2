@@ -1,7 +1,6 @@
 package Player;
 
 import Exceptions.CantWalkIntoWall;
-import Exceptions.PlaceInFrontOfYouIsOccupied;
 import Exceptions.YouAreInFightException;
 import Items.Weapons;
 import Rooms.Room;
@@ -9,6 +8,11 @@ import Map.Map;
 
 import java.awt.*;
 
+/**
+ * This class creates player and his functionality.
+ *
+ * @author Samuel Barolotti
+ */
 public class Player {
     private String name;
     private int kills;
@@ -239,6 +243,14 @@ public class Player {
         this.dead = dead;
     }
 
+    /**
+     * This method decides if player can move to chosen square.
+     * @param x X coordinates for new player position.
+     * @param y Y coordinates for new player position.
+     * @param before This is int, that can be 1 or 2 (-1, -2), if condition is true then it is sent to another method. Because we need to replace old position with null.
+     * @param room used for reaching other objects in room and for conditions.
+     * @return It is used for commands and their output. If its true command was successful.
+     */
     public boolean movePlayer(int x, int y, int before, Room room) {
         if (x < room.getWidth() && y < room.getHeight() && x >= 0 && y >= 0) {
             if (room.isPlaceEmpty(x, y, room)) {
@@ -263,6 +275,13 @@ public class Player {
         }
     }
 
+    /**
+     * This is used to replace old position with null.
+     * @param x new x.
+     * @param y new y.
+     * @param before int for reaching old position. More described in method, which uses this.
+     * @param room for reaching new objects.
+     */
     public void positionBefore(int x, int y, int before, Room room) {
         if (Math.abs(before) == 1) {
             room.setObj(x + before, y, null);
@@ -273,6 +292,13 @@ public class Player {
         }
     }
 
+    /**
+     * This method check and moves player to another room in map.
+     * @param x current x cor.
+     * @param y current y cor.
+     * @param room For reaching other objects.
+     * @return FOr command check.
+     */
     public boolean moveToAnotherRoom(int x, int y, Room room) {
         if (!inFight) {
             int width = room.getWidth();
@@ -344,6 +370,10 @@ public class Player {
         return false;
     }
 
+    /**
+     *Displays players stats.
+     * @return Returned String of data.
+     */
     public String displayStats() {
         Weapons slot1 = (Weapons) inv.getItem(1);
         Weapons slot2 = (Weapons) inv.getItem(2);

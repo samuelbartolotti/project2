@@ -6,6 +6,9 @@ import Rooms.Room;
 
 import java.awt.*;
 
+/**
+ * This class creates enemies and their functionalities.
+ */
 public abstract class Enemies {
     protected int hp;
     protected int damage;
@@ -88,6 +91,11 @@ public abstract class Enemies {
         }
     }
 
+    /**
+     * This method moves enemy by one sqaure closer to player.
+     * @param player Enemy will move relative to player.
+     * @param room needed for conditions.
+     */
     public void move(Player player, Room room) {
         int x = getX();
         int y = getY();
@@ -108,6 +116,11 @@ public abstract class Enemies {
         }
     }
 
+    /**
+     * This method chooses action of enemy in combat.
+     * @param player needed for taking damage or movement relative to player.
+     * @param room needed for conditions and in game movement. Also needed for access to another objects in room.
+     */
     public void playRound(Player player, Room room) {
         int choose = RandomGenerator.rnd(0, 4);
         if (choose >=0 && choose <=1) {

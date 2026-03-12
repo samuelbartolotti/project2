@@ -6,6 +6,11 @@ import Map.Map;
 import PlayerCommand.*;
 import Rooms.*;
 
+/**
+ * This class creates in game objects and starts main loop.
+ *
+ * @author Samuel Bartolotti
+ */
 public class GameLoop extends ConsoleUI {
     private Player player = new Player();
     private final int numberOfLevels = 10;
@@ -24,6 +29,9 @@ public class GameLoop extends ConsoleUI {
 
     GameData data = GameData.loadGameDataFromResources("/gamedata.json");
 
+    /**
+     * This method is the main loop and checks the in game progress with user input.
+     */
     public void start() {
         super.println(GameData.getText().get(1));
         player.getInv().addToInventory(GameData.getWepList().getFirst(), 1);
@@ -85,5 +93,7 @@ public class GameLoop extends ConsoleUI {
                 }
             }
         }
+
+        super.println("\u001B[32m\n\n\n\n\n\n\n                 You Won");
     }
 }
