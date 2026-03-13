@@ -86,8 +86,10 @@ public class Player {
     }
 
     public void addHp(int hp) {
-        if (!(this.hp + hp > this.maxHp)) {
+        if (this.hp + hp <= this.maxHp) {
             this.hp += hp;
+        } else {
+            this.hp = this.maxHp;
         }
     }
 

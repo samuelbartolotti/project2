@@ -98,12 +98,12 @@ public class Shop extends Room {
                 throw new NotEnoughManyException("You don't have enough money, to buy this item");
 
             } else if (place && o instanceof Weapons) {
-                inv.addToInventory((Weapons) o, current);
                 player.subtractGold(((Weapons) o).getPrice());
+                inv.addToInventory((Weapons) o, current);
 
             } else if (o instanceof Consumables) {
-                ((Consumables) o).useConsumable(player);
                 player.subtractGold(((Consumables) o).getPrice());
+                ((Consumables) o).useConsumable(player);
 
             } else {
                 throw new FullInventoryException("You don't have enough space in your inventory");
