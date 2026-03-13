@@ -9,6 +9,11 @@ import Player.Player;
 
 import java.awt.*;
 
+/**
+ * This class creates map of all rooms in level.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class Map extends RandomGenerator {
     private Room[][] map;
     private final int width = 50;
@@ -40,6 +45,9 @@ public class Map extends RandomGenerator {
         generateCorridors();
     }
 
+    /**
+     * This method generates corridors between rooms.
+     */
     public void generateCorridors() {
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
@@ -55,12 +63,22 @@ public class Map extends RandomGenerator {
         }
     }
 
+    /**
+     * Check if there is a room on coordinates xy.
+     * @param row x.
+     * @param col y.
+     * @return if there is room.
+     */
     public boolean hasRoom(int row, int col) {
         return row >= 0 && row < height &&
                 col >= 0 && col < width &&
                 map[row][col] != null;
     }
 
+    /**
+     * Sets player to base position in start room.
+     * @param player player to be set.
+     */
     public void setPlayer(Player player){
         Room room = map[25][0];
         int half = room.getWidth()/2;
@@ -71,6 +89,9 @@ public class Map extends RandomGenerator {
         player.setHp(player.getMaxHp());
     }
 
+    /**
+     * This method generates map from start room to random direction except down.
+     */
     public void generateMap() {
         Point roomXY = new Point(25,1);
 
@@ -106,6 +127,12 @@ public class Map extends RandomGenerator {
         }
     }
 
+    /**
+     * This method creates rooms type.
+     * @param roomXY coordinates for new room.
+     * @param lastRoom room before.
+     * @return for loop to continue.
+     */
     public boolean isPlaceEmpty(Point roomXY, boolean lastRoom){
         if(map[roomXY.x][roomXY.y] == null) {
             if(lastRoom) {
@@ -120,6 +147,10 @@ public class Map extends RandomGenerator {
         }
     }
 
+    /**
+     * Displays map.
+     * @return String of all roooms.
+     */
     public String displayMap() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < width; i++) {

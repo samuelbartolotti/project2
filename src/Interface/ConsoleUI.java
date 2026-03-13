@@ -2,6 +2,11 @@ package Interface;
 
 import java.util.Scanner;
 
+/**
+ * This class has every method used in interface.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class ConsoleUI extends RandomGenerator implements UI  {
     private static final Scanner sc = new Scanner(System.in);
 

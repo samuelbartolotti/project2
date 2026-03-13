@@ -4,6 +4,11 @@ import Game.GameData;
 import Player.Player;
 import Rooms.Room;
 
+/**
+ * This class creates ESC command.
+ *
+ * @author Samuel Barolotti.
+ */
 public class ESC extends Command {
 
 

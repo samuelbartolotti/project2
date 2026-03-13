@@ -1,5 +1,10 @@
 package Items;
 
+/**
+ * This class creates rarities for items.
+ *
+ * @author Samuel Bartolotti.
+ */
 public enum Rarity {
     COMMON("\u001B[37m",0.01, 40, 5),
     RARE("\u001B[32m", 0.02, 30, 10),

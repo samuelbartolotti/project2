@@ -8,6 +8,11 @@ import Rooms.Room;
 import Rooms.Shop;
 import Rooms.SpawnType;
 
+/**
+ * This class executes interact command, when conditions are true.
+ *
+ * @author Samuel Barolotti.
+ */
 public class Interact extends Command {
 
     @Override

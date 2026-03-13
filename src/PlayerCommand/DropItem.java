@@ -6,6 +6,11 @@ import Items.Weapons;
 import Player.Player;
 import Rooms.Room;
 
+/**
+ * This class creates dropItem command.
+ *
+ * @author Samuel Barolotti.
+ */
 public class DropItem extends Command {
 
     @Override

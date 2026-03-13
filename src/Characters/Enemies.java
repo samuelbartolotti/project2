@@ -8,6 +8,8 @@ import java.awt.*;
 
 /**
  * This class creates enemies and their functionalities.
+ *
+ * @author Samuel Bartolotti.
  */
 public abstract class Enemies {
     protected int hp;
@@ -130,6 +132,10 @@ public abstract class Enemies {
         }
     }
 
+    /**
+     * This method displays enemies stats.
+     * @return is String with all data.
+     */
     public StringBuilder enemiesStats() {
         StringBuilder stats = new StringBuilder();
         stats.append("Enemy: ").append("\n" + " name - ").append(name).append("\n" + " HP - ").append(hp).append("\n" + " damage - ").append(damage).append("\n" + " Cooldown - ").append(cooldown);

@@ -2,6 +2,11 @@ package Interface;
 
 import java.util.Random;
 
+/**
+ * This class generates random numbers.
+ *
+ * @author Samuel Bartolotti.
+ */
 public abstract class RandomGenerator {
     protected static Random random = new Random();
 

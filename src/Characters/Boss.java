@@ -1,5 +1,10 @@
 package Characters;
 
+/**
+ * This class creates Boss.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class Boss extends Enemies{
     public Boss(int hp, int damage, String name, int cooldown) {
         super(hp, damage, name, cooldown);

@@ -3,6 +3,11 @@ package PlayerCommand;
 import Player.Player;
 import Rooms.Room;
 
+/**
+ * This class executes changeSlot command.
+ *
+ * @author Samuel Barolotti.
+ */
 public class ChangeSlot extends Command {
 
     @Override

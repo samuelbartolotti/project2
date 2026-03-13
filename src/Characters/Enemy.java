@@ -1,5 +1,10 @@
 package Characters;
 
+/**
+ * This class creates enemy.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class Enemy extends Enemies{
     public Enemy(int hp, int damage, String name) {
         super(hp, damage, name);

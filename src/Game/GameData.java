@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Represents the game data loaded from a JSON file.
  * This class serves as a data container for all static game content, such as items, characters, locations, and quests.
  *
+ * @author Samuel Bartolotti.
  */
 public class GameData {
 
@@ -97,25 +98,20 @@ public class GameData {
      * @return a game.GameData object filled with the loaded data
      */
     public static GameData loadGameDataFromResources(String resourcePath) {
-        //Vytvoření objektu pro práci s JSON souborem
         Gson gson = new Gson();
 
-        //Načtení souboru gamedata.json, musí být ve složce res/resources, ta musí být označena jako resource složka projektu
         try (InputStream is = GameData.class.getResourceAsStream(resourcePath)) {
 
-            //Zde ověřujeme, zdali soubor existuje
             if (is == null) {
                 throw new IllegalStateException("Nenalezen resource: " + resourcePath +
                         " (zkontrolujte, že soubor je v src/main/resources).");
             }
 
-            //Přečte celý JSON a vytvoří instanci game.GameData, naplní vlastnosti podle názvů klíčů v JSONU, vrátí se hotová třída game.GameData
             GameData data = gson.fromJson(
                     new InputStreamReader(is, StandardCharsets.UTF_8),
                     GameData.class
             );
 
-            //  PŘIDÁNO – přehrání do statických listů
             wepList = data.getWeapons();
             bossList = data.getBosses();
             eneList = data.getEnemies();
@@ -128,16 +124,4 @@ public class GameData {
         }
 
     }
-
-
-//    public Location findLocation(String id) {
-//        for (Location l : locations) {
-//            if (l.getId().equals(id)){
-//                return l;
-//            }
-//        }
-//        throw new IllegalArgumentException("Neexistuje lokace s id: " + id);
-//    }
-
-
 }

@@ -6,6 +6,11 @@ import Rooms.Room;
 
 import java.awt.*;
 
+/**
+ * This class executes Move command.
+ *
+ * @author Samuel Barolotti.
+ */
 public class Move extends Command {
 
     @Override

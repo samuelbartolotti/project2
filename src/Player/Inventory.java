@@ -4,6 +4,11 @@ import Exceptions.EmptyInventoryException;
 import Exceptions.FullInventoryException;
 import Items.Weapons;
 
+/**
+ * This class creates inventory for player.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class Inventory {
     private final int inventorySize = 2;
     private Weapons[] inventory;
@@ -32,6 +37,10 @@ public class Inventory {
         inventory[i-1] = null;
     }
 
+    /**
+     * Displays weapons in inventory.
+     * @return returns String of weapons.
+     */
     public String displayInv(){
         if(inventory[0] == null){
             throw new EmptyInventoryException("inventory is empty");
@@ -42,15 +51,11 @@ public class Inventory {
         }
     }
 
-    public int isInventoryFull(){
-        for(int i = 0; i < inventory.length; i++){
-            if(inventory[i] == null){
-                return i;
-            }
-        }
-        return -1;
-    }
-
+    /**
+     * Adds weapon to inventory.
+     * @param wep weapon to add.
+     * @param currentInventory current slot player has equipped.
+     */
     public void addToInventory(Weapons wep, int currentInventory){
         if(this.isInvEmpty(currentInventory)){
             inventory[currentInventory-1] = wep;

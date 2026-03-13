@@ -8,6 +8,11 @@ import Player.Player;
 import Rooms.Room;
 import Characters.Enemies;
 
+/**
+ * this class executes attack command with all the conditions.
+ *
+ * @author Samuel Barolotti.
+ */
 public class Attack extends Command {
 
     @Override

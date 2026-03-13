@@ -11,7 +11,7 @@ import java.awt.*;
 /**
  * This class creates player and his functionality.
  *
- * @author Samuel Barolotti
+ * @author Samuel Barolotti.
  */
 public class Player {
     private String name;

@@ -1,8 +1,12 @@
 package Items;
 
 import Interface.ConsoleUI;
-import Interface.RandomGenerator;
 
+/**
+ * This class sets basics for all items.
+ *
+ * @author Samuel Bartolotti.
+ */
 public abstract class Item extends ConsoleUI {
     protected String name;
     protected int damage;

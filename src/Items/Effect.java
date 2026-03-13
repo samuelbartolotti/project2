@@ -2,6 +2,11 @@ package Items;
 
 import Player.Player;
 
+/**
+ * This class is used to create effects for consumables.
+ *
+ * @author Samuel Bartolotti.
+ */
 public enum Effect {
     HEAL {
         @Override

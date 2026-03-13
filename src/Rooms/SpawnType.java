@@ -1,7 +1,5 @@
 package Rooms;
 
-import Game.GameData;
-
 public enum SpawnType {
     CONSUMABLE(3),
     WEAPON(1),

@@ -1,10 +1,17 @@
 package Items;
-
-import Interface.RandomGenerator;
 import Player.Player;
 
+/**
+ * This class creates consumable, which player can use.
+ *
+ * @author Samuel Bartolotti.
+ */
 public class Consumables extends Item {
 
+    /**
+     * This method generates effect of consumable.
+     * @return is used for setting effect to consumable.
+     */
     public Effect generateEffect() {
         int eff = rnd(0, 3);
 
@@ -17,6 +24,10 @@ public class Consumables extends Item {
         };
     }
 
+    /**
+     * This method generates rarity of consumable.
+     * @return rarity to be assigned to consumable.
+     */
     public Rarity generateRarity() {
         int r = rnd(0, 3);
         return switch (r) {
@@ -34,6 +45,10 @@ public class Consumables extends Item {
         this.price = rarity.returnPrice();
     }
 
+    /**
+     * This method add effect of consumable to player.
+     * @param player used to add effect.
+     */
     public void useConsumable(Player player) {
         effect.apply(player, rarity.returnEffect());
         super.println("Added effect: " + effect.name());
