@@ -57,7 +57,7 @@ public abstract class Item extends ConsoleUI {
     }
 
     public int getPrice() {
-        return price;
+        return rarity.returnPrice();
     }
 
     public void setPrice(int price) {

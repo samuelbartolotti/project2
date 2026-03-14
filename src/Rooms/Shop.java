@@ -93,16 +93,17 @@ public class Shop extends Room {
             int price = ((Item) o).getPrice();
             int current = player.getCurrentSlot();
             boolean place = inv.isInvEmpty(current);
+            System.out.println(((Item) o).getPrice());
 
             if (player.getPlayersGold() - price < 0) {
                 throw new NotEnoughManyException("You don't have enough money, to buy this item");
 
             } else if (place && o instanceof Weapons) {
-                player.subtractGold(((Weapons) o).getPrice());
+                player.subtractGold(((Item) o).getPrice());
                 inv.addToInventory((Weapons) o, current);
 
             } else if (o instanceof Consumables) {
-                player.subtractGold(((Consumables) o).getPrice());
+                player.subtractGold(((Item) o).getPrice());
                 ((Consumables) o).useConsumable(player);
 
             } else {
