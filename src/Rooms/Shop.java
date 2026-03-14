@@ -3,7 +3,6 @@ package Rooms;
 import Exceptions.FullInventoryException;
 import Exceptions.NotEnoughManyException;
 import Game.GameData;
-import Interface.UI;
 import Items.Consumables;
 import Items.Item;
 import Items.Weapons;
@@ -12,6 +11,11 @@ import Player.Inventory;
 
 import java.util.ArrayList;
 
+/**
+ * This class creates shopp room. It is empty room with shopper in the middle.
+ *
+ * @author Samuel Barolotti.
+ */
 public class Shop extends Room {
     private final int numberOfItems = 3;
     private ArrayList<Weapons> weapons = new ArrayList<>();
@@ -42,6 +46,10 @@ public class Shop extends Room {
         this.items = items;
     }
 
+    /**
+     * This method return String of items that the shopper sells.
+     * @return String of items.
+     */
     public String itemsToString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Items:\n");
@@ -66,6 +74,9 @@ public class Shop extends Room {
         generateChances();
     }
 
+    /**
+     * This method generates items for sale.
+     */
     public void generateItems() {
         for (int i = 0; i < numberOfItems; i++) {
             int chooseTypeOfWeapon = rnd(0, 1);
@@ -87,6 +98,11 @@ public class Shop extends Room {
         return items.get(choice-1);
     }
 
+    /**
+     * This method runs all condition for player to be able to buy an item. If all of them are true. Then the item will be added to player.
+     * @param o chosen object to be bought.
+     * @param player player buying the item.
+     */
     public void buy(Object o, Player player) {
         if (o instanceof Weapons || o instanceof Consumables) {
             Inventory inv = player.getInv();

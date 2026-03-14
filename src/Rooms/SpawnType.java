@@ -1,5 +1,10 @@
 package Rooms;
 
+/**
+ * This class contains chances for Object to be spawn in room.
+ *
+ * @author Samuel Barolotti.
+ */
 public enum SpawnType {
     CONSUMABLE(3),
     WEAPON(1),

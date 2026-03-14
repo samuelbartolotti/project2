@@ -9,6 +9,11 @@ import Player.Player;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Base class for all the rooms.
+ *
+ * @author Samuel Barolotti.
+ */
 public abstract class Room extends RandomGenerator {
     protected final int maxLength = 20;
     protected final int minLength = 10;
@@ -128,6 +133,10 @@ public abstract class Room extends RandomGenerator {
         this.enemies.add(enemies);
     }
 
+    /**
+     * This method generates size of room.
+     * @return returns dimensions of room.
+     */
     public Point generateRoomXY() {
         int width = rnd(minLength, maxLength);
         int length = rnd(minLength, maxLength);
@@ -135,6 +144,12 @@ public abstract class Room extends RandomGenerator {
         return new Point(width, length);
     }
 
+    /**
+     * This method chooses random square in room.
+     * @param width width of room.
+     * @param height height of room.
+     * @return returns chosen square.
+     */
     public Point generateXY(int width, int height) {
         int x = rnd(0, width - 1);
         int y = rnd(0, height - 1);
@@ -142,6 +157,11 @@ public abstract class Room extends RandomGenerator {
         return new Point(x, y);
     }
 
+    /**
+     * This method generates loot from chest.
+     * @param type Possible loot types.
+     * @return returns chosen object.
+     */
     public Object chooseItem(SpawnType type) {
         if (type == SpawnType.CONSUMABLE) {
             return new Consumables();
@@ -152,6 +172,10 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
+    /**
+     * Generates which type the room will be.
+     * @return returns room type, which is assigned to map.
+     */
     public static Room generateRoomType() {
         int number = rnd(1, 100);
 
@@ -175,6 +199,9 @@ public abstract class Room extends RandomGenerator {
         return null;
     }
 
+    /**
+     * This method has chance to generate object like weapon or consumable in room.
+     */
     public void generateChances() {
         SpawnType[] spawnTypes = SpawnType.values();
         int number = rnd(1, 100);
@@ -207,6 +234,10 @@ public abstract class Room extends RandomGenerator {
         }
     }
 
+    /**
+     * Checks if player has killed all the enemies.
+     * @return If not than true.
+     */
     public boolean isInFight() {
         if(this instanceof FightRoom || this instanceof BossFight) {
             return !enemies.isEmpty();
@@ -214,12 +245,20 @@ public abstract class Room extends RandomGenerator {
         return false;
     }
 
+    /**
+     * This method makes enemies play in combat.
+     * @param player Needed for getting damage and movement of enemies.
+     */
     public void fight(Player player) {
         for(Enemies enemy: enemies){
             enemy.playRound(player, this);
         }
     }
 
+    /**
+     *This method is needed for visualization of room. It contains all the important conditions.
+     * @return visual part of room.
+     */
     public String displayRoom() {
         StringBuilder sb = new StringBuilder();
         sb.append(" ");

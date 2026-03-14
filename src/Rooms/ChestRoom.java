@@ -2,6 +2,11 @@ package Rooms;
 
 import java.awt.*;
 
+/**
+ * This class is very simple. Its just empty room with chest in the middle.
+ *
+ * @author Samuel Barolotti.
+ */
 public class ChestRoom extends Room {
     public ChestRoom() {
         Point xy = super.generateRoomXY();

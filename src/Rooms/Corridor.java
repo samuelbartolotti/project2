@@ -1,5 +1,11 @@
 package Rooms;
 
+/**
+ * This is unused class. I had plans to make corridors between rooms. However, in the end I went with different idea.
+ * I'm keeping this class in case I change my mind.
+ *
+ * @author Samuel Barolotti.
+ */
 public class Corridor extends Room{
     private boolean up;
 

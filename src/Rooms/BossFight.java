@@ -5,6 +5,11 @@ import Game.GameData;
 
 import java.awt.*;
 
+/**
+ * This class creates Boss room from Fight room.
+ *
+ * @author Samuel Barolotti.
+ */
 public class BossFight extends Room {
     private FightRoom fight;
     private int numOfBoss;
@@ -39,6 +44,9 @@ public class BossFight extends Room {
         generateChances();
     }
 
+    /**
+     * This method generates bosses in the room.
+     */
     public void generateBosses() {
         for (int i = 0; i < numOfBoss; i++) {
             Point xy = super.generateXY(this.width, this.height);

@@ -7,6 +7,11 @@ import Game.GameData;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * This class generates enemies into room.
+ *
+ * @author Samuel Barolotti.
+ */
 public class FightRoom extends Room {
     private int numOfEnemies;
 
@@ -34,6 +39,9 @@ public class FightRoom extends Room {
         generateChances();
     }
 
+    /**
+     * This method sets enemies on unoccupied square.
+     */
     public void generateEnemies() {
         for (int i = 0; i < numOfEnemies; i++) {
             Point xy = super.generateXY(this.width, this.height);
