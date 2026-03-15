@@ -13,6 +13,11 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests attack command.
+ *
+ * @author Samuel Barolotti.
+ */
 class AttackTest {
 
     @Test

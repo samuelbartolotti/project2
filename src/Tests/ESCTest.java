@@ -12,6 +12,11 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests esc command.
+ *
+ * @author Samuel Barolotti.
+ */
 class ESCTest {
 
     @Test

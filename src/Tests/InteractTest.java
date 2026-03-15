@@ -11,6 +11,11 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests interact command.
+ *
+ * @author Samuel Barolotti.
+ */
 class InteractTest {
 
     @Test

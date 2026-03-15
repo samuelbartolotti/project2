@@ -13,6 +13,11 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests move command.
+ *
+ * @author Samuel Barolotti.
+ */
 class MoveTest {
 
     @Test

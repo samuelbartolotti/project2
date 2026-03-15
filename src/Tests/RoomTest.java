@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests display method in Room class.
+ *
+ * @author Samuel Barolotti.
+ */
 class RoomTest {
 
     @Test

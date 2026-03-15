@@ -13,6 +13,11 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class tests dropItem command.
+ *
+ * @author Samuel Barolotti.
+ */
 class DropItemTest {
 
     @Test
