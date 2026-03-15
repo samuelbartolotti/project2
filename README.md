@@ -26,3 +26,9 @@ This is a 2D-made text game, which was coded in java using IntelliJ IDEA. This g
 ## Objective:
 Your main goal is to fight through the maze. Then find exist.
 This maze contains 10 levels, each with many dangers to face.
+
+## How to start game
+To start game open cmd then type:
+* cd (path, for example: C:\skola_IT\project2\out\artifacts\project2_jar) 
+* chcp 65001 - this is used for new symbols
+* java -jar (project name with .jar, for example project2.jar)
